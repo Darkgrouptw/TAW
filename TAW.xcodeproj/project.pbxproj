@@ -13,7 +13,76 @@
 		D3B765931CFEBD6300A4B730 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B765921CFEBD6300A4B730 /* Assets.xcassets */; };
 		D3B765961CFEBD6300A4B730 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3B765941CFEBD6300A4B730 /* LaunchScreen.storyboard */; };
 		D3B7659E1CFF0B1900A4B730 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7659D1CFF0B1900A4B730 /* RegisterViewController.swift */; };
+		D3B765CC1CFF196800A4B730 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B765BA1CFF17DE00A4B730 /* CryptoSwift.framework */; };
+		D3B765CD1CFF196800A4B730 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3B765BA1CFF17DE00A4B730 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D3B765D21CFF3B4000A4B730 /* BackToLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B765D11CFF3B4000A4B730 /* BackToLogin.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D3B765B91CFF17DE00A4B730 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = "CryptoSwift iOS";
+		};
+		D3B765BB1CFF17DE00A4B730 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5596BDBB1BC8F220007E38D5;
+			remoteInfo = "CryptoSwift watchOS";
+		};
+		D3B765BD1CFF17DE00A4B730 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75DF77721BC8EB59006E9520;
+			remoteInfo = "CryptoSwift OSX";
+		};
+		D3B765BF1CFF17DE00A4B730 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75D614BF1BD844F2001358B2;
+			remoteInfo = "CryptoSwift tvOS";
+		};
+		D3B765C11CFF17DE00A4B730 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = CryptoSwiftTests;
+		};
+		D3B765C91CFF195400A4B730 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 754BE45419693E190098E6F3;
+			remoteInfo = "CryptoSwift iOS";
+		};
+		D3B765CE1CFF196800A4B730 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 754BE45419693E190098E6F3;
+			remoteInfo = "CryptoSwift iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D3B765D01CFF196800A4B730 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D3B765CD1CFF196800A4B730 /* CryptoSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D3B765881CFEBD6300A4B730 /* TAW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TAW.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +93,8 @@
 		D3B765951CFEBD6300A4B730 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3B765971CFEBD6300A4B730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3B7659D1CFF0B1900A4B730 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
+		D3B765D11CFF3B4000A4B730 /* BackToLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackToLogin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3B765CC1CFF196800A4B730 /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +114,7 @@
 			children = (
 				D3B7658A1CFEBD6300A4B730 /* TAW */,
 				D3B765891CFEBD6300A4B730 /* Products */,
+				D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +129,7 @@
 		D3B7658A1CFEBD6300A4B730 /* TAW */ = {
 			isa = PBXGroup;
 			children = (
+				D3B765D11CFF3B4000A4B730 /* BackToLogin.swift */,
 				D3B7658B1CFEBD6300A4B730 /* AppDelegate.swift */,
 				D3B7658D1CFEBD6300A4B730 /* LoginViewController.swift */,
 				D3B7659D1CFF0B1900A4B730 /* RegisterViewController.swift */,
@@ -65,6 +139,18 @@
 				D3B765971CFEBD6300A4B730 /* Info.plist */,
 			);
 			path = TAW;
+			sourceTree = "<group>";
+		};
+		D3B765B21CFF17DD00A4B730 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D3B765BA1CFF17DE00A4B730 /* CryptoSwift.framework */,
+				D3B765BC1CFF17DE00A4B730 /* CryptoSwift.framework */,
+				D3B765BE1CFF17DE00A4B730 /* CryptoSwift.framework */,
+				D3B765C01CFF17DE00A4B730 /* CryptoSwift.framework */,
+				D3B765C21CFF17DE00A4B730 /* CryptoSwiftTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,10 +163,13 @@
 				D3B765841CFEBD6300A4B730 /* Sources */,
 				D3B765851CFEBD6300A4B730 /* Frameworks */,
 				D3B765861CFEBD6300A4B730 /* Resources */,
+				D3B765D01CFF196800A4B730 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D3B765CA1CFF195400A4B730 /* PBXTargetDependency */,
+				D3B765CF1CFF196800A4B730 /* PBXTargetDependency */,
 			);
 			name = TAW;
 			productName = TAW;
@@ -114,12 +203,56 @@
 			mainGroup = D3B7657F1CFEBD6300A4B730;
 			productRefGroup = D3B765891CFEBD6300A4B730 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D3B765B21CFF17DD00A4B730 /* Products */;
+					ProjectRef = D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D3B765871CFEBD6300A4B730 /* TAW */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D3B765BA1CFF17DE00A4B730 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = D3B765B91CFF17DE00A4B730 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D3B765BC1CFF17DE00A4B730 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = D3B765BB1CFF17DE00A4B730 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D3B765BE1CFF17DE00A4B730 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = D3B765BD1CFF17DE00A4B730 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D3B765C01CFF17DE00A4B730 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = D3B765BF1CFF17DE00A4B730 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D3B765C21CFF17DE00A4B730 /* CryptoSwiftTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CryptoSwiftTests.xctest;
+			remoteRef = D3B765C11CFF17DE00A4B730 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D3B765861CFEBD6300A4B730 /* Resources */ = {
@@ -140,12 +273,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3B7659E1CFF0B1900A4B730 /* RegisterViewController.swift in Sources */,
+				D3B765D21CFF3B4000A4B730 /* BackToLogin.swift in Sources */,
 				D3B7658E1CFEBD6300A4B730 /* LoginViewController.swift in Sources */,
 				D3B7658C1CFEBD6300A4B730 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D3B765CA1CFF195400A4B730 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CryptoSwift iOS";
+			targetProxy = D3B765C91CFF195400A4B730 /* PBXContainerItemProxy */;
+		};
+		D3B765CF1CFF196800A4B730 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CryptoSwift iOS";
+			targetProxy = D3B765CE1CFF196800A4B730 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D3B7658F1CFEBD6300A4B730 /* Main.storyboard */ = {
@@ -255,6 +402,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = TAW/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Dark.TAW;
@@ -267,6 +415,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = TAW/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Dark.TAW;
@@ -293,6 +442,7 @@
 				D3B7659C1CFEBD6300A4B730 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

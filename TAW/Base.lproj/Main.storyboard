@@ -38,7 +38,7 @@
                                 <rect key="frame" x="20" y="176" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpW-jd-Aut">
                                 <rect key="frame" x="191" y="249" width="30" height="30"/>
@@ -107,7 +107,7 @@
                                 <rect key="frame" x="20" y="183" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8YJ-dc-63y">
                                 <rect key="frame" x="86" y="262" width="30" height="30"/>
@@ -119,6 +119,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdD-yj-cAc">
                                 <rect key="frame" x="197" y="262" width="30" height="30"/>
                                 <state key="normal" title="取消"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="custom" customClass="BackToLogin" customModule="TAW" customModuleProvider="target" id="lHs-sj-2nD"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ijP-Dx-Sfj">
                                 <rect key="frame" x="20" y="92" width="280" height="30"/>
@@ -131,7 +134,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="AccountText" destination="ijP-Dx-Sfj" id="YNr-C9-HgH"/>
-                        <outlet property="PaaswordText" destination="qnA-0U-5DU" id="VOY-0M-3MO"/>
+                        <outlet property="PasswordText" destination="qnA-0U-5DU" id="7Jk-IA-mNe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wkh-4G-wI6" userLabel="First Responder" sceneMemberID="firstResponder"/>

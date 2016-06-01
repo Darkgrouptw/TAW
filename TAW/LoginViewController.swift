@@ -12,6 +12,7 @@ class LoginViewController: UIViewController
 {
     let url: NSURL = NSURL(string: "http://140.118.175.73/TAW/TokenRequest.php")!
     var key: String!
+    var iv: String = "9947142102698591"
     
     override func viewDidLoad()
     {
@@ -20,7 +21,7 @@ class LoginViewController: UIViewController
         // 要傳 post 時間（Ymd-His）給 server，時間正確就拿到 key 回來
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
-        let params: String = "Time=" + GetTimeToString()
+        let params: String = "Time=" + LoginViewController.GetTimeToString()
         print("======================================")
         print("Params => " + params)
         print("======================================")
@@ -29,14 +30,14 @@ class LoginViewController: UIViewController
         request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             guard error == nil && data != nil else {
-                self.AlertMessageShow("網路異常，請重新開始")
+                LoginViewController.AlertMessageShow("網路異常，請重新開始", targetViewController: self)
                 return
             }
             
             if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(response)")
-                self.AlertMessageShow("網路異常，請重新開始")
+                LoginViewController.AlertMessageShow("網路異常，請重新開始", targetViewController: self )
             }
             
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
@@ -50,10 +51,10 @@ class LoginViewController: UIViewController
                 print("Key => " + self.key)
                 
             case "01":
-                self.AlertMessageShow("時間有誤，請使用正確時間")
+                LoginViewController.AlertMessageShow("時間有誤，請使用正確時間", targetViewController: self)
                 
             case "02":
-                self.AlertMessageShow("Server異常，請重新開始")
+                LoginViewController.AlertMessageShow("Server異常，請重新開始", targetViewController: self)
             default:
                 break
             }
@@ -75,6 +76,7 @@ class LoginViewController: UIViewController
         case "LoginToRegister":
             let registerController = segue.destinationViewController as! RegisterViewController
             registerController.key = self.key
+            registerController.iv = self.iv
         default:
             break
         }
@@ -82,7 +84,7 @@ class LoginViewController: UIViewController
     
 
 
-    func GetTimeToString() -> String
+    static func GetTimeToString() -> String
     {
         // 拿現在時間
         let date: NSDate = NSDate()
@@ -95,12 +97,12 @@ class LoginViewController: UIViewController
         return dateFormatter.stringFromDate(date)
     }
     
-    func AlertMessageShow(msg: String)
+    static func AlertMessageShow(msg: String, targetViewController: UIViewController)
     {
         let question: UIAlertController = UIAlertController(title: nil, message: msg, preferredStyle: .Alert)
         let buttonAction: UIAlertAction = UIAlertAction(title: "離開", style: .Default, handler: nil)
         question.addAction(buttonAction)
-        presentViewController(question, animated: true, completion: nil)
+        targetViewController.presentViewController(question, animated: true, completion: nil)
     }
 }
 
