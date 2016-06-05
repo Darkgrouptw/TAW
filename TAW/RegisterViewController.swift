@@ -10,9 +10,13 @@ import UIKit
 import CryptoSwift
 
 class RegisterViewController: UIViewController {
+    
+    weak var ResponseLabel: UILabel?        // 從 Login 來的 UILabel
+    
     let url: NSURL = NSURL(string: "http://140.118.175.73/TAW/Register.php")!
     var key: String!
     var iv: String!
+    
     
     @IBOutlet weak var AccountText: UITextField!
     @IBOutlet weak var PasswordText: UITextField!
@@ -20,7 +24,7 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        print("Register Page Get Key => " + key)
+        print("Register Page Get Key => " + key + "\n" + iv)
     }
     
     
@@ -45,10 +49,68 @@ class RegisterViewController: UIViewController {
         
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
-        let params: String = "Time="+LoginViewController.GetTimeToString()
-        
+        let ParamsUser: String = try! AccountText.text!.encrypt(AES(key: key, iv: iv)).toBase64()!
+        let ParamsPass: String = try! PasswordText.text!.encrypt(AES(key: key, iv: iv)).toBase64()!
+        let ParamsTime: String = try! LoginViewController.GetTimeToString().encrypt(AES(key: key, iv: iv)).toBase64()!
+        let params: String = "Account=" + ParamsUser + "&Password=" + ParamsPass + "&Time=" + ParamsTime
         print("======================================")
         print("Params => " + params)
         print("======================================")
+        
+        request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+            guard error == nil && data != nil else {
+                LoginViewController.AlertMessageShow("網路異常，請重新開始", targetViewController: self)
+                return
+            }
+            
+            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+                LoginViewController.AlertMessageShow("網路異常，請重新開始", targetViewController: self )
+            }
+            
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print(responseString)
+            var data = responseString!.componentsSeparatedByString("\n")
+            data[0] = data[0].stringByReplacingOccurrencesOfString("Type: ", withString: "")
+            
+            switch data[0]
+            {
+            case "00":
+                self.dismissViewControllerAnimated(true, completion: {() in self.SendSuccessMessageToLogin()})
+        
+            //case "01":
+                //LoginViewController.AlertMessageShow("時間有誤，請使用正確時間", targetViewController: self)
+                
+            //case "02":
+                //LoginViewController.AlertMessageShow("Server異常，請重新開始", targetViewController: self)
+            
+            //case "03":
+                //LoginViewController.AlertMessageShow("帳號註冊過了", targetViewController: self)
+                
+            default:
+                print(responseString)
+                break
+            }
+        }
+        task.resume()
+    }
+    
+    
+    @IBAction func AllKeyBoradExit(sender: AnyObject)
+    {
+        AccountText.resignFirstResponder()
+        PasswordText.resignFirstResponder()
+    }
+    @IBAction func KeyBoardFinishExit(sender: AnyObject)
+    {
+        sender.resignFirstResponder()
+    }
+    
+    
+    func SendSuccessMessageToLogin()
+    {
+        self.ResponseLabel?.text = "註冊成功！！"
     }
 }

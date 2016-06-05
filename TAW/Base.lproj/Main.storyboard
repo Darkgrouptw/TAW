@@ -13,7 +13,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -33,16 +33,25 @@
                                 <rect key="frame" x="20" y="85" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="KeyBoardFinishExit:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="CUx-rW-G1C"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Is1-vQ-QcX">
                                 <rect key="frame" x="20" y="176" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="KeyBoardFinishExit:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="yhs-81-Aeo"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpW-jd-Aut">
                                 <rect key="frame" x="191" y="249" width="30" height="30"/>
                                 <state key="normal" title="登入"/>
+                                <connections>
+                                    <action selector="LoginButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J75-u7-6CU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soQ-Sr-Pu0">
                                 <rect key="frame" x="78" y="249" width="30" height="30"/>
@@ -59,14 +68,47 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sL0-D9-I9l">
+                                <rect key="frame" x="20" y="394" width="280" height="154"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="AllKeyBoardExit:" destination="BYZ-38-t0r" eventType="touchDown" id="hhw-9Y-7qA"/>
+                        </connections>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="AccountText" destination="JL6-Mm-zwK" id="0dh-rj-lUL"/>
+                        <outlet property="PasswordText" destination="Is1-vQ-QcX" id="k9g-4L-ZsI"/>
+                        <outlet property="ResponseText" destination="sL0-D9-I9l" id="iBA-4o-kEt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="565" y="490"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="m3X-6i-WCT">
+            <objects>
+                <viewController id="DRw-4e-wg6" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Uin-pc-ipf"/>
+                        <viewControllerLayoutGuide type="bottom" id="HAo-3f-lMg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EG7-lq-f9d">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VOm-C5-mSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1036" y="490"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="GDt-eD-fBo">
@@ -76,7 +118,7 @@
                         <viewControllerLayoutGuide type="top" id="FLb-u8-g8D"/>
                         <viewControllerLayoutGuide type="bottom" id="teP-nj-A6T"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Arf-XI-FU3">
+                    <view key="view" contentMode="scaleToFill" id="Arf-XI-FU3" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -108,6 +150,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="KeyBoardFinishExit:" destination="c9c-n5-sbk" eventType="editingDidEndOnExit" id="fVX-Tv-rXf"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8YJ-dc-63y">
                                 <rect key="frame" x="86" y="262" width="30" height="30"/>
@@ -120,16 +165,22 @@
                                 <rect key="frame" x="197" y="262" width="30" height="30"/>
                                 <state key="normal" title="取消"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="custom" customClass="BackToLogin" customModule="TAW" customModuleProvider="target" id="lHs-sj-2nD"/>
+                                    <segue destination="BYZ-38-t0r" kind="custom" identifier="" customClass="BackToLogin" customModule="TAW" customModuleProvider="target" id="lHs-sj-2nD"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ijP-Dx-Sfj">
                                 <rect key="frame" x="20" y="92" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="KeyBoardFinishExit:" destination="c9c-n5-sbk" eventType="editingDidEndOnExit" id="3OG-GH-AgX"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="AllKeyBoradExit:" destination="c9c-n5-sbk" eventType="touchDown" id="rCP-Pi-S5f"/>
+                        </connections>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
