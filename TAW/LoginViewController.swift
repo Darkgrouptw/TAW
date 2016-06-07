@@ -46,7 +46,8 @@ class LoginViewController: UIViewController
                 return
             }
             
-            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
+            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {
+                // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(response)")
                 LoginViewController.AlertMessageShow("網路異常，請重新開始", targetViewController: self )

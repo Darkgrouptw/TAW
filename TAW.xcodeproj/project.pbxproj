@@ -88,12 +88,12 @@
 /* Begin PBXFileReference section */
 		D3B765881CFEBD6300A4B730 /* TAW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TAW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B7658B1CFEBD6300A4B730 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D3B7658D1CFEBD6300A4B730 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D3B7658D1CFEBD6300A4B730 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = TAW/LoginViewController.swift; sourceTree = "<group>"; };
 		D3B765901CFEBD6300A4B730 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D3B765921CFEBD6300A4B730 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3B765951CFEBD6300A4B730 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3B765971CFEBD6300A4B730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D3B7659D1CFF0B1900A4B730 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D3B7659D1CFF0B1900A4B730 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = TAW/RegisterViewController.swift; sourceTree = "<group>"; };
 		D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		D3B765D11CFF3B4000A4B730 /* BackToLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackToLogin.swift; sourceTree = "<group>"; };
 		D3B765D81D0412C200A4B730 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = TAW/MenuViewController.swift; sourceTree = "<group>"; };
@@ -114,7 +114,6 @@
 		D3B7657F1CFEBD6300A4B730 = {
 			isa = PBXGroup;
 			children = (
-				D3B765D81D0412C200A4B730 /* MenuViewController.swift */,
 				D3B7658A1CFEBD6300A4B730 /* TAW */,
 				D3B765891CFEBD6300A4B730 /* Products */,
 				D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */,
@@ -132,10 +131,9 @@
 		D3B7658A1CFEBD6300A4B730 /* TAW */ = {
 			isa = PBXGroup;
 			children = (
-				D3B765D11CFF3B4000A4B730 /* BackToLogin.swift */,
+				D3F730791D06BC8800FFD5BF /* ViewController */,
 				D3B7658B1CFEBD6300A4B730 /* AppDelegate.swift */,
-				D3B7658D1CFEBD6300A4B730 /* LoginViewController.swift */,
-				D3B7659D1CFF0B1900A4B730 /* RegisterViewController.swift */,
+				D3B765D11CFF3B4000A4B730 /* BackToLogin.swift */,
 				D3B7658F1CFEBD6300A4B730 /* Main.storyboard */,
 				D3B765921CFEBD6300A4B730 /* Assets.xcassets */,
 				D3B765941CFEBD6300A4B730 /* LaunchScreen.storyboard */,
@@ -154,6 +152,17 @@
 				D3B765C21CFF17DE00A4B730 /* CryptoSwiftTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D3F730791D06BC8800FFD5BF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D3B765D81D0412C200A4B730 /* MenuViewController.swift */,
+				D3B7658D1CFEBD6300A4B730 /* LoginViewController.swift */,
+				D3B7659D1CFF0B1900A4B730 /* RegisterViewController.swift */,
+			);
+			name = ViewController;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -80,14 +80,14 @@ class RegisterViewController: UIViewController {
             case "00":
                 self.dismissViewControllerAnimated(true, completion: {() in self.SendSuccessMessageToLogin()})
         
-            //case "01":
-                //LoginViewController.AlertMessageShow("時間有誤，請使用正確時間", targetViewController: self)
+            case "01":
+                LoginViewController.AlertMessageShow("時間有誤，請使用正確時間", targetViewController: self)
                 
-            //case "02":
-                //LoginViewController.AlertMessageShow("Server異常，請重新開始", targetViewController: self)
+            case "02":
+                LoginViewController.AlertMessageShow("Server異常，請重新開始", targetViewController: self)
             
-            //case "03":
-                //LoginViewController.AlertMessageShow("帳號註冊過了", targetViewController: self)
+            case "03":
+                LoginViewController.AlertMessageShow("帳號註冊過了", targetViewController: self)
                 
             default:
                 print(responseString)
