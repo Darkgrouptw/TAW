@@ -14,7 +14,7 @@ class LoginViewController: UIViewController
     // 跟 POST 相關
     let url: NSURL = NSURL(string: "http://140.118.175.73/TAW/TokenRequest.php")!
     let loginurl: NSURL = NSURL(string: "http://140.118.175.73/TAW/Login.php")!
-    var key: String!
+    var key: String = ""
     var iv: String = "9947142102698591"
     
     // 存起來的檔案
@@ -90,7 +90,7 @@ class LoginViewController: UIViewController
     
     @IBAction func LoginButtonPress(sender: AnyObject)
     {
-        self.ResponseText.text = "登入中！！"
+        /*self.ResponseText.text = "登入中！！"
         let request =  NSMutableURLRequest(URL: loginurl)
         request.HTTPMethod = "POST"
         let ParamsAccount: String = try! AccountText.text!.encrypt(AES(key: key, iv: iv)).toBase64()!
@@ -139,7 +139,7 @@ class LoginViewController: UIViewController
                 break
             }
         }
-        task.resume()
+        task.resume()*/
     }
     
     @IBAction func AllKeyBoardExit(sender: AnyObject)

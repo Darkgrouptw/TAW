@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DRw-4e-wg6">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -50,7 +50,7 @@
                                 <rect key="frame" x="191" y="249" width="30" height="30"/>
                                 <state key="normal" title="登入"/>
                                 <connections>
-                                    <action selector="LoginButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J75-u7-6CU"/>
+                                    <action selector="LoginButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BAM-hV-UZd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soQ-Sr-Pu0">
@@ -89,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="565" y="490"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="m3X-6i-WCT">
             <objects>
-                <viewController id="DRw-4e-wg6" sceneMemberID="viewController">
+                <viewController id="DRw-4e-wg6" customClass="MenuViewController" customModule="TAW" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uin-pc-ipf"/>
                         <viewControllerLayoutGuide type="bottom" id="HAo-3f-lMg"/>
@@ -100,13 +100,85 @@
                     <view key="view" contentMode="scaleToFill" id="EG7-lq-f9d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drh-p3-kbB">
+                                <rect key="frame" x="20" y="106" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.87058823529999996" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="任務" image="ButtonImages/Yello.jpg">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleButton:" destination="DRw-4e-wg6" eventType="touchUpInside" id="MGW-pq-Ycv"/>
+                                    <segue destination="0Zk-Ez-z0U" kind="custom" identifier="" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="kct-E5-nPJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsQ-3w-dnX">
+                                <rect key="frame" x="180" y="306" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.71764705882352942" green="0.0" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="設定" image="ButtonImages/Red.jpg">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleButton:" destination="DRw-4e-wg6" eventType="touchUpInside" id="kRh-VS-4ka"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIu-ut-mur">
+                                <rect key="frame" x="27" y="306" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.5607843137254902" green="0.37647058823529411" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="成就" image="ButtonImages/Blue.jpg">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleButton:" destination="DRw-4e-wg6" eventType="touchUpInside" id="zbG-Mp-mP0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7j-ow-NwI">
+                                <rect key="frame" x="187" y="106" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.28235294117647058" green="0.76470588235294112" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="寵物" image="ButtonImages/Green.jpg">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleButton:" destination="DRw-4e-wg6" eventType="touchUpInside" id="cNh-bm-ofc"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="AchievementButton" destination="lIu-ut-mur" id="Hgf-8e-Pcr"/>
+                        <outlet property="MissionButton" destination="drh-p3-kbB" id="KVU-Gh-7jr"/>
+                        <outlet property="PetButton" destination="p7j-ow-NwI" id="0MT-Ls-OwH"/>
+                        <outlet property="SettingButton" destination="IsQ-3w-dnX" id="Zgn-4c-Tqj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOm-C5-mSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1036" y="490"/>
+        </scene>
+        <!--Mission View Controller-->
+        <scene sceneID="Oia-7s-slc">
+            <objects>
+                <viewController id="0Zk-Ez-z0U" customClass="MissionViewController" customModule="TAW" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YHJ-Kk-o0m"/>
+                        <viewControllerLayoutGuide type="bottom" id="8fD-Hv-BJy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z72-BS-yhz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.87058823529999996" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UeQ-3K-aRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1435" y="490"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="GDt-eD-fBo">
@@ -191,4 +263,10 @@
             <point key="canvasLocation" x="565" y="1121"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ButtonImages/Blue.jpg" width="16" height="16"/>
+        <image name="ButtonImages/Green.jpg" width="16" height="16"/>
+        <image name="ButtonImages/Red.jpg" width="16" height="16"/>
+        <image name="ButtonImages/Yello.jpg" width="16" height="16"/>
+    </resources>
 </document>

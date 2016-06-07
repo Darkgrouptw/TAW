@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D32D77061D06E7C600F49FC9 /* MissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32D77051D06E7C600F49FC9 /* MissionViewController.swift */; };
+		D32EA93D1D07169B006EBA2C /* AllMenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32EA93C1D07169B006EBA2C /* AllMenuSegue.swift */; };
+		D32EA93F1D072A3E006EBA2C /* ButtonImages in Resources */ = {isa = PBXBuildFile; fileRef = D32EA93E1D072A3E006EBA2C /* ButtonImages */; };
 		D3B7658C1CFEBD6300A4B730 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7658B1CFEBD6300A4B730 /* AppDelegate.swift */; };
 		D3B7658E1CFEBD6300A4B730 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7658D1CFEBD6300A4B730 /* LoginViewController.swift */; };
 		D3B765911CFEBD6300A4B730 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3B7658F1CFEBD6300A4B730 /* Main.storyboard */; };
@@ -86,6 +89,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D32D77051D06E7C600F49FC9 /* MissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MissionViewController.swift; path = TAW/MissionViewController.swift; sourceTree = "<group>"; };
+		D32EA93C1D07169B006EBA2C /* AllMenuSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllMenuSegue.swift; sourceTree = "<group>"; };
+		D32EA93E1D072A3E006EBA2C /* ButtonImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ButtonImages; sourceTree = "<group>"; };
 		D3B765881CFEBD6300A4B730 /* TAW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TAW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B7658B1CFEBD6300A4B730 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3B7658D1CFEBD6300A4B730 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = TAW/LoginViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +117,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D32EA9371D071664006EBA2C /* CustomSegue */ = {
+			isa = PBXGroup;
+			children = (
+				D3B765D11CFF3B4000A4B730 /* BackToLogin.swift */,
+				D32EA93C1D07169B006EBA2C /* AllMenuSegue.swift */,
+			);
+			name = CustomSegue;
+			sourceTree = "<group>";
+		};
 		D3B7657F1CFEBD6300A4B730 = {
 			isa = PBXGroup;
 			children = (
@@ -131,9 +146,10 @@
 		D3B7658A1CFEBD6300A4B730 /* TAW */ = {
 			isa = PBXGroup;
 			children = (
+				D32EA93E1D072A3E006EBA2C /* ButtonImages */,
+				D32EA9371D071664006EBA2C /* CustomSegue */,
 				D3F730791D06BC8800FFD5BF /* ViewController */,
 				D3B7658B1CFEBD6300A4B730 /* AppDelegate.swift */,
-				D3B765D11CFF3B4000A4B730 /* BackToLogin.swift */,
 				D3B7658F1CFEBD6300A4B730 /* Main.storyboard */,
 				D3B765921CFEBD6300A4B730 /* Assets.xcassets */,
 				D3B765941CFEBD6300A4B730 /* LaunchScreen.storyboard */,
@@ -157,9 +173,10 @@
 		D3F730791D06BC8800FFD5BF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D3B765D81D0412C200A4B730 /* MenuViewController.swift */,
 				D3B7658D1CFEBD6300A4B730 /* LoginViewController.swift */,
 				D3B7659D1CFF0B1900A4B730 /* RegisterViewController.swift */,
+				D3B765D81D0412C200A4B730 /* MenuViewController.swift */,
+				D32D77051D06E7C600F49FC9 /* MissionViewController.swift */,
 			);
 			name = ViewController;
 			path = ..;
@@ -273,6 +290,7 @@
 			files = (
 				D3B765961CFEBD6300A4B730 /* LaunchScreen.storyboard in Resources */,
 				D3B765931CFEBD6300A4B730 /* Assets.xcassets in Resources */,
+				D32EA93F1D072A3E006EBA2C /* ButtonImages in Resources */,
 				D3B765911CFEBD6300A4B730 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,7 +305,9 @@
 				D3B7659E1CFF0B1900A4B730 /* RegisterViewController.swift in Sources */,
 				D3B765D91D0412C200A4B730 /* MenuViewController.swift in Sources */,
 				D3B765D21CFF3B4000A4B730 /* BackToLogin.swift in Sources */,
+				D32EA93D1D07169B006EBA2C /* AllMenuSegue.swift in Sources */,
 				D3B7658E1CFEBD6300A4B730 /* LoginViewController.swift in Sources */,
+				D32D77061D06E7C600F49FC9 /* MissionViewController.swift in Sources */,
 				D3B7658C1CFEBD6300A4B730 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
