@@ -110,18 +110,7 @@
                                 </state>
                                 <connections>
                                     <action selector="handleButton:" destination="DRw-4e-wg6" eventType="touchUpInside" id="MGW-pq-Ycv"/>
-                                    <segue destination="0Zk-Ez-z0U" kind="custom" identifier="" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="kct-E5-nPJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsQ-3w-dnX">
-                                <rect key="frame" x="180" y="306" width="120" height="120"/>
-                                <color key="backgroundColor" red="0.71764705882352942" green="0.0" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <state key="normal" title="設定" image="ButtonImages/Red.jpg">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="handleButton:" destination="DRw-4e-wg6" eventType="touchUpInside" id="kRh-VS-4ka"/>
+                                    <segue destination="0Zk-Ez-z0U" kind="custom" identifier="MenuToMission" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="kct-E5-nPJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIu-ut-mur">
@@ -133,6 +122,7 @@
                                 </state>
                                 <connections>
                                     <action selector="handleButton:" destination="DRw-4e-wg6" eventType="touchUpInside" id="zbG-Mp-mP0"/>
+                                    <segue destination="Fhe-Yl-zvp" kind="custom" identifier="MenuToAchievement" customClass="AllMenuSegue" id="wIh-Oh-3XI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7j-ow-NwI">
@@ -144,6 +134,19 @@
                                 </state>
                                 <connections>
                                     <action selector="handleButton:" destination="DRw-4e-wg6" eventType="touchUpInside" id="cNh-bm-ofc"/>
+                                    <segue destination="Ooz-Rt-tuT" kind="custom" identifier="MenuToPet" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="juO-tf-w9B"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsQ-3w-dnX">
+                                <rect key="frame" x="180" y="306" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.71764705882352942" green="0.0" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="設定" image="ButtonImages/Red.jpg">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleButton:" destination="DRw-4e-wg6" eventType="touchUpInside" id="kRh-VS-4ka"/>
+                                    <segue destination="v9I-Vr-1P4" kind="custom" identifier="MenuToSetting" customClass="AllMenuSegue" id="DVC-B8-0C1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -172,13 +175,22 @@
                     <view key="view" contentMode="scaleToFill" id="Z72-BS-yhz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70p-tw-nDy">
+                                <rect key="frame" x="20" y="20" width="60" height="60"/>
+                                <state key="normal" title="Back" image="ButtonImages/BackButton.png"/>
+                                <connections>
+                                    <segue destination="DRw-4e-wg6" kind="custom" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="ein-CM-5jB"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.87058823529999996" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UeQ-3K-aRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1435" y="490"/>
+            <point key="canvasLocation" x="1499" y="193"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="GDt-eD-fBo">
@@ -262,11 +274,99 @@
             </objects>
             <point key="canvasLocation" x="565" y="1121"/>
         </scene>
+        <!--Achievement View Controller-->
+        <scene sceneID="GlY-Yl-JCu">
+            <objects>
+                <viewController id="Fhe-Yl-zvp" customClass="AchievementViewController" customModule="TAW" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J1l-zm-TmT"/>
+                        <viewControllerLayoutGuide type="bottom" id="UYz-i2-aS1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FQ7-JA-nqb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqm-UR-tez">
+                                <rect key="frame" x="20" y="20" width="60" height="60"/>
+                                <state key="normal" title="Back" image="ButtonImages/BackButton.png"/>
+                                <connections>
+                                    <segue destination="DRw-4e-wg6" kind="custom" customClass="AllMenuSegue" id="Cp3-Pq-iI1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.56078431370000004" green="0.37647058820000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mck-6L-QhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="989" y="1183"/>
+        </scene>
+        <!--Pet View Controller-->
+        <scene sceneID="ZY8-KD-h3V">
+            <objects>
+                <viewController id="Ooz-Rt-tuT" customClass="PetViewController" customModule="TAW" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fJv-hj-mUx"/>
+                        <viewControllerLayoutGuide type="bottom" id="zBk-Sp-urF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Asp-uM-hAR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-wt-fXk">
+                                <rect key="frame" x="20" y="20" width="60" height="60"/>
+                                <state key="normal" title="Back" image="ButtonImages/BackButton.png"/>
+                                <connections>
+                                    <segue destination="DRw-4e-wg6" kind="custom" id="Tnh-my-uqp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.28235294119999998" green="0.76470588240000004" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HQk-pL-YCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1837" y="811"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="yJI-Vx-LJF">
+            <objects>
+                <viewController id="v9I-Vr-1P4" customClass="SettingViewController" customModule="TAW" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UAr-rl-Fhu"/>
+                        <viewControllerLayoutGuide type="bottom" id="BGZ-zo-SQ5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UAS-mv-bBo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6h-ax-Cc6">
+                                <rect key="frame" x="20" y="20" width="60" height="60"/>
+                                <state key="normal" title="Back" image="ButtonImages/BackButton.png"/>
+                                <connections>
+                                    <segue destination="DRw-4e-wg6" kind="custom" id="MXC-fz-yDs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hlv-RD-MW7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1447" y="1050"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ButtonImages/BackButton.png" width="16" height="16"/>
         <image name="ButtonImages/Blue.jpg" width="16" height="16"/>
         <image name="ButtonImages/Green.jpg" width="16" height="16"/>
         <image name="ButtonImages/Red.jpg" width="16" height="16"/>
         <image name="ButtonImages/Yello.jpg" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Cp3-Pq-iI1"/>
+    </inferredMetricsTieBreakers>
 </document>

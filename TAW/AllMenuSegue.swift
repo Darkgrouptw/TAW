@@ -16,11 +16,11 @@ class AllMenuSegue: UIStoryboardSegue
     
     var Mode: PopMode = .Present
     
-    var circle: UIView?
+    var circle: UIView!
     
     var circleColor: UIColor?
     
-    var origin = CGPointZero
+    var origin: CGPoint = CGPointZero
     
     let presentDuration = 0.5
     let dismissDuration = 0.3
@@ -49,37 +49,50 @@ class AllMenuSegue: UIStoryboardSegue
             
 
             circle = UIView(frame: frameFromCircle(originCenter, size: originSize, start: origin))
-            //sourceVC.view.layer.masksToBounds = true
             circle!.layer.cornerRadius = circle!.frame.size.height / 2
-            circle!.clipsToBounds = true
             circle!.center = origin
             
             // 把它縮小
             circle!.transform = CGAffineTransformMakeScale(0.001, 0.001)
-            destinationVC.view.transform = CGAffineTransformMakeScale(0.001, 0.001)
-            destinationVC.view.clipsToBounds = true
             
             // 使用它原本的顏色
             circle!.backgroundColor = self.circleColor
             
-            sourceVC.view.addSubview(destinationVC.view)
+            sourceVC.view.addSubview(circle)
             
             //UIView.anit
             
             UIView.animateWithDuration(presentDuration, animations: {
                 self.circle!.transform = CGAffineTransformMakeScale(1, 1)
-                destinationVC.view.transform = CGAffineTransformMakeScale(1, 1)
-                destinationVC.view.center = originCenter
                 }, completion: { (_) -> Void in
-                    /*destinationVC.view.removeFromSuperview()
-                    
-                    
-                    let time = dispatch_time(DISPATCH_TIME_NOW, Int64(0.001 * Double(NSEC_PER_SEC)))
-                    
-                    dispatch_after(time, dispatch_get_main_queue()) {
-                        
-                        sourceVC.presentViewController(destinationVC, animated: false, completion: nil)}*/
+                    // 把原本的 scene 加上去，再把 circle 刪除
+                    self.sourceViewController.presentViewController(self.destinationViewController
+                        , animated: false, completion:{(_) -> Void in
+                            self.circle.removeFromSuperview()})
+                })
+        }
+        else
+        {
+            let originCenter = destinationVC.view.center
+            let originSize = destinationVC.view.frame.size
+            
+            circle = UIView(frame: frameFromCircle(originCenter, size: originSize, start: origin))
+            circle!.layer.cornerRadius = circle!.frame.size.height / 2
+            circle!.transform = CGAffineTransformMakeScale(1, 1)
+
+            circle!.center = origin
+            
+            self.destinationViewController.view.addSubview(circle)
+            self.sourceViewController.dismissViewControllerAnimated(false, completion: { (_) -> Void in
+                UIView.animateWithDuration(self.dismissDuration, animations: {
+                    self.circle!.transform = CGAffineTransformMakeScale(0.001, 0.001)
+                    self.circle.alpha = 0
+                    }, completion: { (_) -> Void in
+                        self.circle!.removeFromSuperview()
+                })
             })
+            
+            
         }
         /*
          

@@ -23,6 +23,7 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         print("To Menu View Controller !!")
         
+        // 讓按鈕變成圓的
         MissionButton.layer.cornerRadius = MissionButton.frame.width / 2
         MissionButton.clipsToBounds = true
         
@@ -37,29 +38,36 @@ class MenuViewController: UIViewController {
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //print("123123123")
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
         let seg = segue as! AllMenuSegue
         seg.Mode = .Present
         seg.origin = selectedButton.center
         seg.circleColor = selectedButton.backgroundColor
-        /*switch segue.identifier!
+        
+        
+        switch segue.identifier!
         {
         case "MenuToMission":
-         
+            let segVC = segue.destinationViewController as! MissionViewController
+            segVC.OriginButtonCenter = self.selectedButton.center
+        case "MenuToPet":
+            let segVC = segue.destinationViewController as! PetViewController
+            segVC.OriginButtonCenter = self.selectedButton.center
+        case "MenuToAchievement":
+            let segVC = segue.destinationViewController as! AchievementViewController
+            segVC.OriginButtonCenter = self.selectedButton.center
+        case "MenuToSetting":
+            let segVC = segue.destinationViewController as! SettingViewController
+            segVC.OriginButtonCenter = self.selectedButton.center
         default:
             break
-        }*/
-        /*
-        if let controller = segue.destinationViewController as? MissionViewController
-        {
-            //print("123123123")
-            controller.transitioningDelegate = self
-            //print("123123123")
-            controller.modalPresentationStyle = .Custom
-        }*/
+        }
     }
     
+    // 要讓上面那一條不見
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -74,20 +82,4 @@ class MenuViewController: UIViewController {
         let Button = sender as! UIButton
         self.selectedButton = Button
     }
-    
-    /*func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .Present
-        transition.origin = selectedButton.center
-        transition.circleColor = selectedButton.backgroundColor!
-        
-        return transition
-    }
-    
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionMode = .Dismiss
-        transition.origin = selectedButton.center
-        transition.circleColor = selectedButton.backgroundColor!
-        
-        return transition
-    }*/
 }
