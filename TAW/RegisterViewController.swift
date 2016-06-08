@@ -33,6 +33,9 @@ class RegisterViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
     @IBAction func RegisterButtonEvent(sender: AnyObject)
     {

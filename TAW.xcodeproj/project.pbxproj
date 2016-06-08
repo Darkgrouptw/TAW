@@ -23,6 +23,7 @@
 		D3B765CD1CFF196800A4B730 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3B765BA1CFF17DE00A4B730 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3B765D21CFF3B4000A4B730 /* BackToLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B765D11CFF3B4000A4B730 /* BackToLogin.swift */; };
 		D3B765D91D0412C200A4B730 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B765D81D0412C200A4B730 /* MenuViewController.swift */; };
+		D3F4C47E1D086FD30085702D /* QRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4C47D1D086FD30085702D /* QRScanner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		D3B765D11CFF3B4000A4B730 /* BackToLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackToLogin.swift; sourceTree = "<group>"; };
 		D3B765D81D0412C200A4B730 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = TAW/MenuViewController.swift; sourceTree = "<group>"; };
+		D3F4C47D1D086FD30085702D /* QRScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScanner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				D32EA9371D071664006EBA2C /* CustomSegue */,
 				D3F730791D06BC8800FFD5BF /* ViewController */,
 				D3B7658B1CFEBD6300A4B730 /* AppDelegate.swift */,
+				D3F4C47D1D086FD30085702D /* QRScanner.swift */,
 				D3B7658F1CFEBD6300A4B730 /* Main.storyboard */,
 				D3B765921CFEBD6300A4B730 /* Assets.xcassets */,
 				D3B765941CFEBD6300A4B730 /* LaunchScreen.storyboard */,
@@ -311,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3F4C47E1D086FD30085702D /* QRScanner.swift in Sources */,
 				D3B7659E1CFF0B1900A4B730 /* RegisterViewController.swift in Sources */,
 				D3B765D91D0412C200A4B730 /* MenuViewController.swift in Sources */,
 				D32EA94D1D080A65006EBA2C /* AchievementViewController.swift in Sources */,

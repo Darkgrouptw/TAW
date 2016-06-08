@@ -47,21 +47,24 @@ class MenuViewController: UIViewController {
         seg.origin = selectedButton.center
         seg.circleColor = selectedButton.backgroundColor
         
-        
         switch segue.identifier!
         {
         case "MenuToMission":
             let segVC = segue.destinationViewController as! MissionViewController
             segVC.OriginButtonCenter = self.selectedButton.center
+            segVC.OriginButtonColor = self.selectedButton.backgroundColor
         case "MenuToPet":
             let segVC = segue.destinationViewController as! PetViewController
             segVC.OriginButtonCenter = self.selectedButton.center
+            segVC.OriginButtonColor = self.selectedButton.backgroundColor
         case "MenuToAchievement":
             let segVC = segue.destinationViewController as! AchievementViewController
             segVC.OriginButtonCenter = self.selectedButton.center
+            segVC.OriginButtonColor = self.selectedButton.backgroundColor
         case "MenuToSetting":
             let segVC = segue.destinationViewController as! SettingViewController
             segVC.OriginButtonCenter = self.selectedButton.center
+            segVC.OriginButtonColor = self.selectedButton.backgroundColor
         default:
             break
         }

@@ -11,11 +11,23 @@ import UIKit
 class MissionViewController: UIViewController
 {
     var OriginButtonCenter = CGPointZero
+    var OriginButtonColor: UIColor?
+    
+    var qrScanner: QRScanner!
+    
+    @IBOutlet weak var messageLabel: UILabel!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        qrScanner = QRScanner(view: view!,inputLabel:  messageLabel)
     }
+    
+    @IBAction func TestForQRCode(sender: AnyObject)
+    {
+        qrScanner.Start()
+    }
+
     
     override func didReceiveMemoryWarning()
     {
@@ -26,11 +38,11 @@ class MissionViewController: UIViewController
         return true
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         let seg = segue as! AllMenuSegue
         seg.Mode = .Dismiss
         seg.origin = OriginButtonCenter
+        seg.circleColor = OriginButtonColor
     }
 }

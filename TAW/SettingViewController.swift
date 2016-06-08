@@ -11,6 +11,7 @@ import UIKit
 class SettingViewController: UIViewController
 {
     var OriginButtonCenter = CGPointZero
+    var OriginButtonColor: UIColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,5 +24,13 @@ class SettingViewController: UIViewController
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        let seg = segue as! AllMenuSegue
+        seg.Mode = .Dismiss
+        seg.origin = OriginButtonCenter
+        seg.circleColor = OriginButtonColor
     }
 }
