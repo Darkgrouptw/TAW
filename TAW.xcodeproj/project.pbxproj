@@ -23,6 +23,7 @@
 		D3B765CD1CFF196800A4B730 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3B765BA1CFF17DE00A4B730 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3B765D21CFF3B4000A4B730 /* BackToLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B765D11CFF3B4000A4B730 /* BackToLogin.swift */; };
 		D3B765D91D0412C200A4B730 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B765D81D0412C200A4B730 /* MenuViewController.swift */; };
+		D3DF76E51D097102004AD0C2 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = D3DF76E41D097102004AD0C2 /* line.png */; };
 		D3F4C47E1D086FD30085702D /* QRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4C47D1D086FD30085702D /* QRScanner.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +111,7 @@
 		D3B765B11CFF17DD00A4B730 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		D3B765D11CFF3B4000A4B730 /* BackToLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackToLogin.swift; sourceTree = "<group>"; };
 		D3B765D81D0412C200A4B730 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = TAW/MenuViewController.swift; sourceTree = "<group>"; };
+		D3DF76E41D097102004AD0C2 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
 		D3F4C47D1D086FD30085702D /* QRScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScanner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,7 @@
 		D3B7658A1CFEBD6300A4B730 /* TAW */ = {
 			isa = PBXGroup;
 			children = (
+				D3DF76E41D097102004AD0C2 /* line.png */,
 				D32EA93E1D072A3E006EBA2C /* ButtonImages */,
 				D32EA9371D071664006EBA2C /* CustomSegue */,
 				D3F730791D06BC8800FFD5BF /* ViewController */,
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3B765961CFEBD6300A4B730 /* LaunchScreen.storyboard in Resources */,
+				D3DF76E51D097102004AD0C2 /* line.png in Resources */,
 				D3B765931CFEBD6300A4B730 /* Assets.xcassets in Resources */,
 				D32EA93F1D072A3E006EBA2C /* ButtonImages in Resources */,
 				D3B765911CFEBD6300A4B730 /* Main.storyboard in Resources */,

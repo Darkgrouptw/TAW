@@ -38,7 +38,6 @@ class LoginViewController: UIViewController
         print("Params => " + params)
         print("======================================")
         
-        
         request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             guard error == nil && data != nil else {

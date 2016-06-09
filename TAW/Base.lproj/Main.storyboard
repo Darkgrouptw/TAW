@@ -320,6 +320,36 @@
                                     <segue destination="DRw-4e-wg6" kind="custom" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="Cp3-Pq-iI1"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line.png" translatesAutoresizingMaskIntoConstraints="NO" id="l1X-Rm-inX">
+                                <rect key="frame" x="20" y="116" width="280" height="67"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line.png" translatesAutoresizingMaskIntoConstraints="NO" id="p72-ui-y8D">
+                                <rect key="frame" x="20" y="180" width="280" height="67"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line.png" translatesAutoresizingMaskIntoConstraints="NO" id="dSq-5V-tPV">
+                                <rect key="frame" x="20" y="242" width="280" height="67"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="開始一個任務" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiv-Fx-ltq">
+                                <rect key="frame" x="57" y="102" width="240" height="37"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="完成一個任務" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tU-GT-QAV">
+                                <rect key="frame" x="60" y="166" width="240" height="37"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ygh-xq-RV5">
+                                <rect key="frame" x="20" y="55" width="277" height="67"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="收集三個寵物" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5H-Rh-PjT">
+                                <rect key="frame" x="60" y="226" width="240" height="37"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.56078431370000004" green="0.37647058820000001" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -376,14 +406,73 @@
                                     <segue destination="DRw-4e-wg6" kind="custom" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="MXC-fz-yDs"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButtonImages/Photo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="TMq-Cp-pYp">
+                                <rect key="frame" x="85" y="74" width="150" height="150"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ctb-mS-D9r">
+                                <rect key="frame" x="40" y="364" width="240" height="67"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 你好～～" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQm-yv-sMl">
+                                <rect key="frame" x="40" y="330" width="240" height="37"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AX7-lQ-kdM">
+                                <rect key="frame" x="35" y="439" width="245" height="42"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="登  出">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="line.png" translatesAutoresizingMaskIntoConstraints="NO" id="HnJ-hS-BE3">
+                                <rect key="frame" x="40" y="267" width="240" height="67"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.71764705880000002" green="0.0" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="Photo" destination="TMq-Cp-pYp" id="ooj-nk-SN7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hlv-RD-MW7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1447" y="1050"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="X1Q-Eg-mUn">
+            <objects>
+                <viewController id="9CO-L8-6im" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w9n-px-kHx"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZtU-ip-Cda"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YJB-0E-EMl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RlM-g5-ZOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vb2-js-Osb">
+            <objects>
+                <viewController id="eLo-Db-AyM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="db5-Uo-XDx"/>
+                        <viewControllerLayoutGuide type="bottom" id="TRS-qD-rDK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NVW-bc-OWb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iF0-PD-bhC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
@@ -391,10 +480,12 @@
         <image name="ButtonImages/Blue.jpg" width="16" height="16"/>
         <image name="ButtonImages/Camera.png" width="16" height="16"/>
         <image name="ButtonImages/Green.jpg" width="16" height="16"/>
+        <image name="ButtonImages/Photo.jpg" width="16" height="16"/>
         <image name="ButtonImages/Red.jpg" width="16" height="16"/>
         <image name="ButtonImages/Yello.jpg" width="16" height="16"/>
+        <image name="line.png" width="560" height="315"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tnh-my-uqp"/>
+        <segue reference="Cp3-Pq-iI1"/>
     </inferredMetricsTieBreakers>
 </document>
