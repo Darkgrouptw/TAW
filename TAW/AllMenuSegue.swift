@@ -75,8 +75,7 @@ class AllMenuSegue: UIStoryboardSegue
                     destinationVC.view.removeFromSuperview()
                     
                     // 為了要讓 removeFromSuperview 不會跟底下的衝突，所以寫成 Timer
-                    NSTimer.scheduledTimerWithTimeInterval(0.000001, target: self, selector: #selector(self.DelayShowTimer), userInfo: nil, repeats: false)
-                    
+                    NSTimer.scheduledTimerWithTimeInterval(0.001, target: self, selector: #selector(self.DelayShowTimer), userInfo: nil, repeats: false)
             })
         }
         else
@@ -90,7 +89,6 @@ class AllMenuSegue: UIStoryboardSegue
         
             circle!.center = origin
             circle!.backgroundColor = UIColor.yellowColor() //circleColor
-            
             
             sourceVC.dismissViewControllerAnimated(true, completion: nil)
             /*print(destinationVC.view.subviews.count)

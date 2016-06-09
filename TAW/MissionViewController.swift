@@ -15,19 +15,32 @@ class MissionViewController: UIViewController
     
     var qrScanner: QRScanner!
     
+    @IBOutlet weak var QRViewBar: UIToolbar!
     @IBOutlet weak var messageLabel: UILabel!
+    
+    var IsStart: Bool = false;
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        qrScanner = QRScanner(view: view!,inputLabel:  messageLabel)
+        qrScanner = QRScanner(view: view!,inputLabel:  messageLabel, QRBar: QRViewBar)
     }
     
     @IBAction func TestForQRCode(sender: AnyObject)
     {
-        qrScanner.Start()
+        if !IsStart
+        {
+            IsStart = true
+            qrScanner.Start(view)
+        }
     }
 
+    @IBAction func QRCodeStopEvent(sender: AnyObject)
+    {
+        
+        IsStart = false
+        qrScanner.Stop(view)
+    }
     
     override func didReceiveMemoryWarning()
     {

@@ -17,13 +17,15 @@ class QRScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate
     var qrCodeFrameView: UIView!
     
     var messageLabel: UILabel!
+    var QRToolbar: UIToolbar!
     
-    init(view: UIView, inputLabel: UILabel)
+    init(view: UIView, inputLabel: UILabel, QRBar: UIToolbar)
     {
         super.init()
         
         let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         messageLabel = inputLabel
+        QRToolbar = QRBar
         
         do {
             // Get an instance of the AVCaptureDeviceInput class using the previous device object.
@@ -44,24 +46,6 @@ class QRScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate
             // Detect all the supported bar code
             captureMetadataOutput.metadataObjectTypes = supportedBarCodes
             
-            // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-            videoPreviewLayer?.frame = view.layer.bounds
-            view.layer.addSublayer(videoPreviewLayer!)
-            
-            // Move the message label to the top view
-            view.bringSubviewToFront(messageLabel)
-            
-            // Initialize QR Code Frame to highlight the QR code
-            qrCodeFrameView = UIView()
-            
-            if let qrCodeFrameView = qrCodeFrameView {
-                qrCodeFrameView.layer.borderColor = UIColor.greenColor().CGColor
-                qrCodeFrameView.layer.borderWidth = 2
-                view.addSubview(qrCodeFrameView)
-                view.bringSubviewToFront(qrCodeFrameView)
-            }
             
         } catch {
             // If any error occurs, simply print it out and don't continue any more.
@@ -70,10 +54,48 @@ class QRScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate
         }
     }
     
-    func Start()
+    func Start(view: UIView)
     {
+     
+        // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        videoPreviewLayer?.frame = view.layer.bounds
+        view.layer.addSublayer(videoPreviewLayer!)
+        
+        // Move the message label to the top view
+        view.bringSubviewToFront(QRToolbar)
+        view.bringSubviewToFront(messageLabel)
+        
+        // Initialize QR Code Frame to highlight the QR code
+        qrCodeFrameView = UIView()
+        
+        // 找到 QR code 的時候
+        if let qrCodeFrameView = qrCodeFrameView
+        {
+            qrCodeFrameView.layer.borderColor = UIColor.greenColor().CGColor
+            qrCodeFrameView.layer.borderWidth = 2
+            view.addSubview(qrCodeFrameView)
+            view.bringSubviewToFront(qrCodeFrameView)
+        }
+
+        
         // Start video capture
         captureSession?.startRunning()
+        
+        messageLabel.hidden = false
+        QRToolbar.hidden = false
+        
+    }
+    
+    func Stop(view: UIView)
+    {
+        // Stop video capture
+        captureSession?.stopRunning()
+        videoPreviewLayer.removeFromSuperlayer()
+        
+        messageLabel.hidden = true
+        QRToolbar.hidden = true
     }
     
     
@@ -84,8 +106,10 @@ class QRScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate
         
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
+            
+            // no barcode/QR code is detected
             qrCodeFrameView?.frame = CGRectZero
-            messageLabel.text = "No barcode/QR code is detected"
+            messageLabel.text = ""
             return
         }
         

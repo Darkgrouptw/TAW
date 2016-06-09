@@ -176,31 +176,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8C-nG-i4s">
+                                <rect key="frame" x="252" y="20" width="48" height="46"/>
+                                <state key="normal" title="掃描" image="ButtonImages/Camera.png"/>
+                                <connections>
+                                    <action selector="TestForQRCode:" destination="0Zk-Ez-z0U" eventType="touchUpInside" id="vRX-e0-Tfa"/>
+                                </connections>
+                            </button>
+                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="v8e-No-ZVf">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="reply" id="V8u-cR-QCp">
+                                        <connections>
+                                            <action selector="QRCodeStopEvent:" destination="0Zk-Ez-z0U" id="gTt-IC-ReM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogM-CO-pyQ">
+                                <rect key="frame" x="20" y="533" width="280" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70p-tw-nDy">
-                                <rect key="frame" x="20" y="20" width="60" height="60"/>
+                                <rect key="frame" x="20" y="28" width="40" height="40"/>
                                 <state key="normal" title="Back" image="ButtonImages/BackButton.png"/>
                                 <connections>
                                     <segue destination="DRw-4e-wg6" kind="custom" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="ein-CM-5jB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8C-nG-i4s">
-                                <rect key="frame" x="238" y="35" width="30" height="30"/>
-                                <state key="normal" title="掃描"/>
-                                <connections>
-                                    <action selector="TestForQRCode:" destination="0Zk-Ez-z0U" eventType="touchUpInside" id="vRX-e0-Tfa"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogM-CO-pyQ">
-                                <rect key="frame" x="20" y="533" width="280" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.87058823529999996" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="QRViewBar" destination="v8e-No-ZVf" id="8R5-qR-pUc"/>
                         <outlet property="messageLabel" destination="ogM-CO-pyQ" id="dkq-kj-UJI"/>
                     </connections>
                 </viewController>
@@ -303,7 +314,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqm-UR-tez">
-                                <rect key="frame" x="20" y="20" width="60" height="60"/>
+                                <rect key="frame" x="20" y="28" width="40" height="40"/>
                                 <state key="normal" title="Back" image="ButtonImages/BackButton.png"/>
                                 <connections>
                                     <segue destination="DRw-4e-wg6" kind="custom" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="Cp3-Pq-iI1"/>
@@ -331,7 +342,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfM-wt-fXk">
-                                <rect key="frame" x="20" y="20" width="60" height="60"/>
+                                <rect key="frame" x="20" y="28" width="40" height="40"/>
                                 <state key="normal" title="Back" image="ButtonImages/BackButton.png"/>
                                 <connections>
                                     <segue destination="DRw-4e-wg6" kind="custom" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="Tnh-my-uqp"/>
@@ -359,7 +370,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6h-ax-Cc6">
-                                <rect key="frame" x="20" y="20" width="60" height="60"/>
+                                <rect key="frame" x="20" y="28" width="40" height="40"/>
                                 <state key="normal" title="Back" image="ButtonImages/BackButton.png"/>
                                 <connections>
                                     <segue destination="DRw-4e-wg6" kind="custom" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="MXC-fz-yDs"/>
@@ -378,11 +389,12 @@
     <resources>
         <image name="ButtonImages/BackButton.png" width="16" height="16"/>
         <image name="ButtonImages/Blue.jpg" width="16" height="16"/>
+        <image name="ButtonImages/Camera.png" width="16" height="16"/>
         <image name="ButtonImages/Green.jpg" width="16" height="16"/>
         <image name="ButtonImages/Red.jpg" width="16" height="16"/>
         <image name="ButtonImages/Yello.jpg" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cp3-Pq-iI1"/>
+        <segue reference="Tnh-my-uqp"/>
     </inferredMetricsTieBreakers>
 </document>
