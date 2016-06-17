@@ -18,26 +18,33 @@ class MissionViewController: UIViewController
     
     @IBOutlet weak var QRViewBar: UIToolbar!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var CameraButton: UIButton!
+    @IBOutlet weak var LoadingImage: UIImageView!
     
     var IsStart: Bool = false
     
     // Mission url
     var MissionURL:NSURL = NSURL(string: "http://140.118.175.73/TAW/Missions/")!
     
+    
+    // 還沒拿到任務之前，都是 False
+    var MissionGET: Bool = false
+    
     // 看有沒有上一個任務還沒完成
     var LastData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     // Get All Data
     var DataFromServer: Array<String>!
-    var ButtonFromData: Array<UIButton>!
+    var ButtonFromData: Array<UIButton> = Array<UIButton>()
     var Timer: NSTimer!
     var TimerIndex: Int = 0
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        qrScanner = QRScanner(view: view!,inputLabel:  messageLabel, QRBar: QRViewBar)
+        LoadingImage.image = UIImage.gifWithName("ButtonImages/loading")
         
+        qrScanner = QRScanner(view: view!,inputLabel:  messageLabel, QRBar: QRViewBar)
         
         let lastMission: String? = LastData.stringForKey("LastMission")
         if(lastMission == nil)
@@ -63,7 +70,7 @@ class MissionViewController: UIViewController
                 
             }
             task.resume()
-
+            Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(DynamicAddMenuButton), userInfo: nil, repeats: true)
         }
     }
     
@@ -87,20 +94,38 @@ class MissionViewController: UIViewController
     // 開始要動態的產生， UILabel，讓他有泡泡飄上來的感覺
     func DynamicAddMenuButton()
     {
-        print("123")
         if(TimerIndex < DataFromServer.count)
         {
             let TempButton = UIButton(frame: ItemRect())
-            TempButton.backgroundColor = UIColor.greenColor()
+            let TempCenter = TempButton.center
+            //TempButton.backgroundColor = UIColor.blueColor()
+            TempButton.setBackgroundImage(UIImage(named: "ButtonImages/MissionButton.png"), forState: .Normal)
+            TempButton.alpha = 0
             TempButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
             TempButton.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
             TempButton.setTitle(DataFromServer[TimerIndex], forState: .Normal)
+            
+            // 使用動畫
+            TempButton.transform = CGAffineTransformMakeScale(0.01, 0.01)
+            TempButton.center = CGPoint(x: self.view.frame.width / 2 ,y: self.view.frame.height)
+            
+            UIView.animateWithDuration(1, animations: {
+                TempButton.transform = CGAffineTransformMakeScale(1, 1)
+                TempButton.center = TempCenter
+                TempButton.alpha = 1
+            })
+            
             self.view.addSubview(TempButton)
             ButtonFromData.append(TempButton)
             TimerIndex += 1
         }
-        else
+        else if(MissionGET)
         {
+            
+            for(var i = 0; i < ButtonFromData.count; i++)
+            {
+                ButtonFromData[i].addTarget(self, action: #selector(ButtonPressEvent), forControlEvents: .TouchUpInside)
+            }
             TimerIndex = 0
             Timer.invalidate()
         }
@@ -117,23 +142,62 @@ class MissionViewController: UIViewController
         print(DataFromServer.count)
         print("========================================")
         
-        switch type {
-        case 0:
-            // 顯示 Menu
-            Timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(DynamicAddMenuButton), userInfo: nil, repeats: false)
-        default:
-            break
+        MissionGET = true
+        
+    }
+    
+    func ButtonPressEvent(sender: AnyObject)
+    {
+        let btn = sender as! UIButton
+        var selectIndex = -1
+        print(btn.currentTitle!)
+        for(var i = 0; i < DataFromServer.count; i++)
+        {
+            if(DataFromServer[i] == btn.currentTitle)
+            {
+                selectIndex = i
+            }
         }
+        print("Button Press Event => \(selectIndex)")
         
-        
+        if  selectIndex != -1
+        {
+            UIView.animateWithDuration(1, animations: {
+                for(var i = 0; i < self.DataFromServer.count; i++)
+                {
+                    self.ButtonFromData[i].center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height + 100)
+                    self.ButtonFromData[i].transform = CGAffineTransformMakeScale(0.001, 0.001)
+                    self.ButtonFromData[i].alpha = 0
+                }
+                }, completion: { (_) -> Void in
+                    for(var i = 0; i < self.DataFromServer.count; i++)
+                    {
+                        self.ButtonFromData[i].removeFromSuperview()
+                    }
+                    //LastData.setInteger(selectIndex, forKey: "LastMission")
+            })
+        }
     }
     
     func ItemRect() -> CGRect
     {
         let screenWidth = self.view.frame.size.width
-        //let
+        let ButtonHeight: CGFloat = 100
+        let Scale: CGFloat = 0.9
         
-        return CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height / 2, screenWidth, 100)
+        let LocationX: CGFloat = self.view.frame.size.width/2 - screenWidth * Scale / 2
+        var LocationY: CGFloat = 0
+        
+        // 奇數偶數的不同
+        if TimerIndex % 2 == 1
+        {
+            LocationY = self.view.frame.size.height / 2 - (CGFloat(DataFromServer.count) - 1) / 2 * ButtonHeight + CGFloat(TimerIndex) * ButtonHeight
+        }
+        else
+        {
+            LocationY = self.view.frame.size.height / 2 - (CGFloat(DataFromServer.count)) / 2 * ButtonHeight + CGFloat(TimerIndex) * ButtonHeight
+        }
+        return CGRectMake(LocationX, LocationY, screenWidth * Scale, ButtonHeight * Scale)
     }
     
     

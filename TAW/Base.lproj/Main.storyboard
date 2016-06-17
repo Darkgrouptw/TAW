@@ -176,7 +176,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8C-nG-i4s">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8C-nG-i4s">
                                 <rect key="frame" x="252" y="20" width="48" height="46"/>
                                 <state key="normal" title="掃描" image="ButtonImages/Camera.png"/>
                                 <connections>
@@ -206,11 +206,16 @@
                                     <segue destination="DRw-4e-wg6" kind="custom" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="ein-CM-5jB"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dBw-cA-79H">
+                                <rect key="frame" x="135" y="241" width="50" height="50"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.87058823529999996" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="CameraButton" destination="f8C-nG-i4s" id="WnT-JM-Zfu"/>
+                        <outlet property="LoadingImage" destination="dBw-cA-79H" id="ght-GS-Fsv"/>
                         <outlet property="QRViewBar" destination="v8e-No-ZVf" id="8R5-qR-pUc"/>
                         <outlet property="messageLabel" destination="ogM-CO-pyQ" id="dkq-kj-UJI"/>
                     </connections>
@@ -486,6 +491,6 @@
         <image name="line.png" width="560" height="315"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cp3-Pq-iI1"/>
+        <segue reference="ein-CM-5jB"/>
     </inferredMetricsTieBreakers>
 </document>

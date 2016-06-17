@@ -72,10 +72,8 @@ class AllMenuSegue: UIStoryboardSegue
                 destinationVC.view.transform = CGAffineTransformMakeScale(1, 1)
                 destinationVC.view.center = originCenter
                 }, completion: { (_) -> Void in
-                    destinationVC.view.removeFromSuperview()
-                    
-                    // 為了要讓 removeFromSuperview 不會跟底下的衝突，所以寫成 Timer
-                    NSTimer.scheduledTimerWithTimeInterval(0.001, target: self, selector: #selector(self.DelayShowTimer), userInfo: nil, repeats: false)
+                    self.circle.removeFromSuperview()
+                    self.sourceViewController.presentViewController(self.destinationViewController, animated: false, completion: nil)
             })
         }
         else
@@ -125,13 +123,6 @@ class AllMenuSegue: UIStoryboardSegue
 
             })*/*/
         }
-    }
-    
-    func DelayShowTimer()
-    {
-        self.sourceViewController.presentViewController(self.destinationViewController, animated: false, completion: { () -> Void in
-            self.circle.removeFromSuperview()
-        })
     }
     
     func DelayDismissTimer()
