@@ -37,7 +37,7 @@ class LoginViewController: UIViewController
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "LoginToMenu"
         {
-            NSThread.sleepForTimeInterval(0.5)
+            NSThread.sleepForTimeInterval(1)
             return loginSuccess
         }
         return true
@@ -107,6 +107,7 @@ class LoginViewController: UIViewController
             default:
                 break
             }
+            self.ResponseText.text = ""
         }
         task.resume()
     }

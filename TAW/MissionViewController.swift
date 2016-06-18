@@ -29,9 +29,12 @@ class MissionViewController: UIViewController
     
     // 還沒拿到任務之前，都是 False
     var MissionGET: Bool = false
-    
+
     // 看有沒有上一個任務還沒完成
     var LastData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    var selectIndex: Int!       // 選擇第幾個任務
+    var StepNow: Int!           // 現在走到第幾不
+    var MissionTotken: String!  // 要破關的 token
     
     // Get All Data
     var DataFromServer: Array<String>!
@@ -70,7 +73,7 @@ class MissionViewController: UIViewController
                 
             }
             task.resume()
-            Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(DynamicAddMenuButton), userInfo: nil, repeats: true)
+            Timer = NSTimer.scheduledTimerWithTimeInterval(1.2, target: self, selector: #selector(DynamicAddMenuButton), userInfo: nil, repeats: true)
         }
     }
     
@@ -151,6 +154,8 @@ class MissionViewController: UIViewController
     
     func ButtonPressEvent(sender: AnyObject)
     {
+        // Show Camera Button
+        CameraButton.hidden = false
         let btn = sender as! UIButton
         var selectIndex = -1
         print(btn.currentTitle!)
@@ -163,6 +168,7 @@ class MissionViewController: UIViewController
         }
         print("Button Press Event => \(selectIndex)")
         
+        // 讓按鈕消失
         if  selectIndex != -1
         {
             UIView.animateWithDuration(1, animations: {
@@ -180,6 +186,14 @@ class MissionViewController: UIViewController
                     //LastData.setInteger(selectIndex, forKey: "LastMission")
             })
         }
+        
+        // 清除 Button & DataFromServer
+        ButtonFromData.removeAll()
+        DataFromServer.removeAll()
+        
+        // 動態顯示 label
+        LoadingImage.hidden = false
+        
     }
     
     func ItemRect() -> CGRect

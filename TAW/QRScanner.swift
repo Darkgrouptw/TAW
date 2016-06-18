@@ -92,6 +92,7 @@ class QRScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate
     {
         // Stop video capture
         captureSession?.stopRunning()
+        qrCodeFrameView?.frame = CGRectZero
         videoPreviewLayer.removeFromSuperlayer()
         
         messageLabel.hidden = true
