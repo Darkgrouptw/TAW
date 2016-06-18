@@ -14,7 +14,7 @@ class ExpandSegue: UIStoryboardSegue
         case Present, Dismiss
     }
     
-    let presentDuration = 0.4 * 10
+    let presentDuration = 0.4
     let dismissDuration = 0.15
     
     var openingFrame: CGRect!
@@ -64,8 +64,12 @@ class ExpandSegue: UIStoryboardSegue
                 }, completion: { (_) -> Void in
                     snapshotView.removeFromSuperview()
                     toVC.view.alpha = 1
-                    fromVC.presentViewController(toVC, animated: false, completion: nil)
+                    fromVC.navigationController!.pushViewController(toVC, animated: false)
             })
+        }
+        else
+        {
+            fromVC.navigationController!.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 }

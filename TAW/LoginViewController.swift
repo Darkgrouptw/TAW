@@ -12,10 +12,12 @@ import CryptoSwift
 class LoginViewController: UIViewController
 {
     // 跟 POST 相關
-    let url: NSURL = NSURL(string: "http://140.118.175.73/TAW/TokenRequest.php")!
-    let loginurl: NSURL = NSURL(string: "http://140.118.175.73/TAW/Login.php")!
-    var key: String = ""
-    var iv: String = "9947142102698591"
+    let url: NSURL = NSURL(string: "http://140.118.175.73/TAW/AccountManager/TokenRequest.php")!
+    let loginurl: NSURL = NSURL(string: "http://140.118.175.73/TAW/AccountManager/Login.php")!
+    var key: String!
+    var iv: String!
+    
+    var loginSuccess: Bool = false
     
     // 存起來的檔案
     var LoginData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -27,74 +29,39 @@ class LoginViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        //ResponseText.text = ResponseMessage
-        
-        // 要傳 post 時間（Ymd-His）給 server，時間正確就拿到 key 回來
-        /*let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
-        let params: String = "Time=" + LoginViewController.GetTimeToString()
-        print("======================================")
-        print("Params => " + params)
-        print("======================================")
-        
-        request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding)
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
-            guard error == nil && data != nil else {
-                LoginViewController.AlertMessageShow("網路異常，請重新開始", targetViewController: self)
-                return
-            }
-            
-            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {
-                // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-                LoginViewController.AlertMessageShow("網路異常，請重新開始", targetViewController: self )
-            }
-            
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            var data = responseString!.componentsSeparatedByString("\n")
-            data[0] = data[0].stringByReplacingOccurrencesOfString("Type: ", withString: "")
-            
-            switch data[0]
-            {
-            case "00":
-                self.key = data[1].stringByReplacingOccurrencesOfString("Key: ", withString: "")
-                print("Key => " + self.key)
-                
-            case "01":
-                LoginViewController.AlertMessageShow("時間有誤，請使用正確時間", targetViewController: self)
-                
-            case "02":
-                LoginViewController.AlertMessageShow("Server異常，請重新開始", targetViewController: self)
-            default:
-                break
-            }
-        }
-        task.resume()
-        
-        
-        /*let token: String? = LoginData.objectForKey("Token") as! String?
-        if(token != nil)
-        {
-            // 直接傳送 Token
-            
-        }*/*/
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "LoginToMenu"
+        {
+            NSThread.sleepForTimeInterval(0.5)
+            return loginSuccess
+        }
+        return true
+    }
     
     @IBAction func LoginButtonPress(sender: AnyObject)
     {
-        /*self.ResponseText.text = "登入中！！"
+        if(AccountText.text?.characters.count < 6)
+        {
+            FunctionSet.AlertMessageShow("帳號大於６個字",  targetViewController: self)
+            return
+        }
+        if(PasswordText.text?.characters.count < 6)
+        {
+            FunctionSet.AlertMessageShow("密碼大於６個字", targetViewController: self)
+            return
+        }
+        
+        self.ResponseText.text = "登入中"
         let request =  NSMutableURLRequest(URL: loginurl)
         request.HTTPMethod = "POST"
         let ParamsAccount: String = try! AccountText.text!.encrypt(AES(key: key, iv: iv)).toBase64()!
         let ParamsPassword: String = try! PasswordText.text!.encrypt(AES(key: key, iv: iv)).toBase64()!
-        let ParamsTime: String = try! LoginViewController.GetTimeToString().encrypt(AES(key: key, iv: iv)).toBase64()!
+        let ParamsTime: String = try! FunctionSet.GetTimeToString().encrypt(AES(key: key, iv: iv)).toBase64()!
         let params: String = "Account=" + ParamsAccount + "&Password=" + ParamsPassword + "&Time=" + ParamsTime
         
         
@@ -105,40 +72,48 @@ class LoginViewController: UIViewController
         request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             guard error == nil && data != nil else {
-                LoginViewController.AlertMessageShow("網路異常，請重新開始", targetViewController: self)
+                FunctionSet.AlertMessageShow("網路異常，請重新開始", targetViewController: self)
                 return
             }
             
             if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(response)")
-                LoginViewController.AlertMessageShow("網路異常，請重新開始", targetViewController: self )
+                FunctionSet.AlertMessageShow("網路異常，請重新開始", targetViewController: self )
             }
             
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             var data = responseString!.componentsSeparatedByString("\n")
             data[0] = data[0].stringByReplacingOccurrencesOfString("Type: ", withString: "")
             
-            //print("\(responseString)")
+            print("\(responseString)")
             switch data[0]
             {
             case "00":
                 self.LoginData.setObject(data[2].stringByReplacingOccurrencesOfString("Token: ", withString: ""), forKey: "Token")
                 print("登入成功！！")
-                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.loginSuccess = true
+                }
+
             case "01":
-                LoginViewController.AlertMessageShow("時間有誤，請使用正確時間", targetViewController: self)
+                FunctionSet.AlertMessageShow("時間有誤，請使用正確時間", targetViewController: self)
                 
             case "02":
-                LoginViewController.AlertMessageShow("Server異常，請重新開始", targetViewController: self)
+                FunctionSet.AlertMessageShow("Server異常，請重新開始", targetViewController: self)
                 
             case "03":
-                LoginViewController.AlertMessageShow("帳號密碼錯誤", targetViewController: self)
+                FunctionSet.AlertMessageShow("帳號密碼錯誤", targetViewController: self)
             default:
                 break
             }
         }
-        task.resume()*/
+        task.resume()
+    }
+    
+    @IBAction func CanelButtonClick(sender: AnyObject)
+    {
+        self.navigationController!.popViewControllerAnimated(true)
     }
     
     @IBAction func AllKeyBoardExit(sender: AnyObject)
@@ -151,20 +126,8 @@ class LoginViewController: UIViewController
         sender.resignFirstResponder()
     }
     
-    
-    // 要將 key 傳給 Reigster 頁面
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        switch segue.identifier!
-        {
-        case "LoginToRegister":
-            let registerController = segue.destinationViewController as! RegisterViewController
-            registerController.key = self.key
-            registerController.iv = self.iv
-            registerController.ResponseLabel = self.ResponseText
-        default:
-            break
-        }
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 }
 

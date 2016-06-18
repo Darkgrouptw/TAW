@@ -19,6 +19,7 @@ class StartViewController: UIViewController, UIViewControllerTransitioningDelega
     // 存起來的檔案
     var LoginData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
+    @IBOutlet weak var ResponseText: UILabel!
     
     override func viewDidLoad()
     {
@@ -83,6 +84,23 @@ class StartViewController: UIViewController, UIViewControllerTransitioningDelega
         let seg = segue as! ExpandSegue
         let btn = sender as! UIButton
         seg.openingFrame = btn.frame
+        
+        switch segue.identifier!
+        {
+        case "StartToLogin":
+            let loginVC = segue.destinationViewController as! LoginViewController
+            loginVC.key = self.key
+            loginVC.iv = self.iv
+            self.ResponseText.text = ""
+        case "StartToRegister":
+            let registerController = segue.destinationViewController as! RegisterViewController
+            registerController.key = self.key
+            registerController.iv = self.iv
+            registerController.ResponseLabel = self.ResponseText
+        default:
+            break
+        }
+
     }
     
     

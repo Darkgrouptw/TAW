@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jpT-hX-25C">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cr3-XS-fyE">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -51,6 +51,14 @@
                                 <state key="normal" title="登入"/>
                                 <connections>
                                     <action selector="LoginButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BAM-hV-UZd"/>
+                                    <segue destination="DRw-4e-wg6" kind="show" identifier="LoginToMenu" id="L14-ru-VGb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwz-Fp-UYJ">
+                                <rect key="frame" x="197" y="258" width="30" height="30"/>
+                                <state key="normal" title="取消"/>
+                                <connections>
+                                    <action selector="CanelButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SRt-xu-FIg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="登入頁面" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cye-Jh-uir">
@@ -59,19 +67,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sL0-D9-I9l">
-                                <rect key="frame" x="20" y="394" width="280" height="154"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRP-Ps-Y7U">
+                                <rect key="frame" x="20" y="392" width="280" height="156"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fwz-Fp-UYJ">
-                                <rect key="frame" x="197" y="258" width="30" height="30"/>
-                                <state key="normal" title="取消"/>
-                                <connections>
-                                    <action selector="LoginButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WUm-yj-1k4"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.30980392156862746" green="0.78823529411764703" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
@@ -82,7 +83,7 @@
                     <connections>
                         <outlet property="AccountText" destination="JL6-Mm-zwK" id="0dh-rj-lUL"/>
                         <outlet property="PasswordText" destination="Is1-vQ-QcX" id="k9g-4L-ZsI"/>
-                        <outlet property="ResponseText" destination="sL0-D9-I9l" id="iBA-4o-kEt"/>
+                        <outlet property="ResponseText" destination="hRP-Ps-Y7U" id="PnH-43-djn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -90,23 +91,23 @@
             <point key="canvasLocation" x="353" y="-603"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Tn3-cP-uo9">
+        <scene sceneID="eSN-sS-36T">
             <objects>
-                <navigationController navigationBarHidden="YES" id="jpT-hX-25C" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="Cr3-XS-fyE" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dP0-cX-Hc6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ylp-5N-9js">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="cCx-br-Osw" kind="relationship" relationship="rootViewController" id="M5b-bO-jjq"/>
+                        <segue destination="cCx-br-Osw" kind="relationship" relationship="rootViewController" id="tue-zh-Qbb"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nft-BL-DBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fXw-M3-2yy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-514" y="-57"/>
+            <point key="canvasLocation" x="-586" y="-57"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="zmG-PD-k2R">
@@ -132,7 +133,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="custom" customClass="ExpandSegue" customModule="TAW" customModuleProvider="target" id="0XY-xu-wtZ"/>
+                                    <segue destination="BYZ-38-t0r" kind="custom" identifier="StartToLogin" customClass="ExpandSegue" customModule="TAW" customModuleProvider="target" id="0XY-xu-wtZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ObS-Pk-1wh">
@@ -143,7 +144,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="c9c-n5-sbk" kind="custom" customClass="ExpandSegue" customModule="TAW" customModuleProvider="target" id="VCB-Vf-Ovn"/>
+                                    <segue destination="c9c-n5-sbk" kind="custom" identifier="StartToRegister" customClass="ExpandSegue" customModule="TAW" customModuleProvider="target" id="VCB-Vf-Ovn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKp-Vd-svb">
@@ -158,11 +159,20 @@
                                 <rect key="frame" x="0.0" y="482" width="320" height="86"/>
                                 <color key="backgroundColor" red="1" green="0.90196078431372551" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9v-of-gvs">
+                                <rect key="frame" x="0.0" y="482" width="320" height="86"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="m3m-hQ-Kjn"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="ResponseText" destination="s9v-of-gvs" id="ciG-0f-CQ4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iha-GF-ukk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -171,7 +181,7 @@
         <!--Menu View Controller-->
         <scene sceneID="m3X-6i-WCT">
             <objects>
-                <viewController id="DRw-4e-wg6" customClass="MenuViewController" customModule="TAW" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Menu" id="DRw-4e-wg6" customClass="MenuViewController" customModule="TAW" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uin-pc-ipf"/>
                         <viewControllerLayoutGuide type="bottom" id="HAo-3f-lMg"/>
@@ -201,7 +211,7 @@
                                 </state>
                                 <connections>
                                     <action selector="handleButton:" destination="DRw-4e-wg6" eventType="touchUpInside" id="zbG-Mp-mP0"/>
-                                    <segue destination="Fhe-Yl-zvp" kind="custom" identifier="MenuToAchievement" customClass="AllMenuSegue" customModule="TAW" id="wIh-Oh-3XI"/>
+                                    <segue destination="Fhe-Yl-zvp" kind="custom" identifier="MenuToAchievement" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="wIh-Oh-3XI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7j-ow-NwI">
@@ -225,7 +235,7 @@
                                 </state>
                                 <connections>
                                     <action selector="handleButton:" destination="DRw-4e-wg6" eventType="touchUpInside" id="kRh-VS-4ka"/>
-                                    <segue destination="v9I-Vr-1P4" kind="custom" identifier="MenuToSetting" customClass="AllMenuSegue" customModule="TAW" id="DVC-B8-0C1"/>
+                                    <segue destination="v9I-Vr-1P4" kind="custom" identifier="MenuToSetting" customClass="AllMenuSegue" customModule="TAW" customModuleProvider="target" id="DVC-B8-0C1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -241,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOm-C5-mSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="904" y="-84"/>
+            <point key="canvasLocation" x="789" y="-207"/>
         </scene>
         <!--Mission View Controller-->
         <scene sceneID="Oia-7s-slc">
@@ -365,6 +375,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdD-yj-cAc">
                                 <rect key="frame" x="201" y="262" width="30" height="30"/>
                                 <state key="normal" title="取消"/>
+                                <connections>
+                                    <action selector="CanelButtonClick:" destination="c9c-n5-sbk" eventType="touchUpInside" id="kUb-Hg-ZE3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.87450980392156863" green="0.070588235294117646" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
@@ -533,6 +546,6 @@
         <image name="line.png" width="560" height="315"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ein-CM-5jB"/>
+        <segue reference="L14-ru-VGb"/>
     </inferredMetricsTieBreakers>
 </document>

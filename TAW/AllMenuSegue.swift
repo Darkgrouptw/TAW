@@ -73,7 +73,7 @@ class AllMenuSegue: UIStoryboardSegue
                 destinationVC.view.center = originCenter
                 }, completion: { (_) -> Void in
                     self.circle.removeFromSuperview()
-                    self.sourceViewController.presentViewController(self.destinationViewController, animated: false, completion: nil)
+                    self.sourceViewController.navigationController!.presentViewController(self.destinationViewController, animated: false, completion: nil)
             })
         }
         else
@@ -88,7 +88,7 @@ class AllMenuSegue: UIStoryboardSegue
             circle!.center = origin
             circle!.backgroundColor = UIColor.yellowColor() //circleColor
             
-            sourceVC.dismissViewControllerAnimated(true, completion: nil)
+            sourceVC.navigationController!.dismissViewControllerAnimated(true, completion: nil)
             /*print(destinationVC.view.subviews.count)
             destinationVC.view.addSubview(sourceVC.view)
             print(destinationVC.view.subviews.count)

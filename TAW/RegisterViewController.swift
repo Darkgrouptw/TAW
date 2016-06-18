@@ -13,7 +13,7 @@ class RegisterViewController: UIViewController {
     
     weak var ResponseLabel: UILabel?        // 從 Login 來的 UILabel
     
-    let url: NSURL = NSURL(string: "http://140.118.175.73/TAW/Register.php")!
+    let url: NSURL = NSURL(string: "http://140.118.175.73/TAW/AccountManager/Register.php")!
     var key: String!
     var iv: String!
     
@@ -98,6 +98,11 @@ class RegisterViewController: UIViewController {
             }
         }
         task.resume()
+    }
+    
+    @IBAction func CanelButtonClick(sender: AnyObject)
+    {
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     

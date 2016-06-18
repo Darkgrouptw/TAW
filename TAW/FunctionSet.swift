@@ -11,10 +11,12 @@ import UIKit
 class FunctionSet: NSObject {
     static func AlertMessageShow(msg: String, targetViewController: UIViewController)
     {
-        let question: UIAlertController = UIAlertController(title: nil, message: msg, preferredStyle: .Alert)
-        let buttonAction: UIAlertAction = UIAlertAction(title: "離開", style: .Default, handler: nil)
-        question.addAction(buttonAction)
-        targetViewController.presentViewController(question, animated: true, completion: nil)
+        dispatch_async(dispatch_get_main_queue()) {
+            let question: UIAlertController = UIAlertController(title: nil, message: msg, preferredStyle: .Alert)
+            let buttonAction: UIAlertAction = UIAlertAction(title: "離開", style: .Default, handler: nil)
+            question.addAction(buttonAction)
+            targetViewController.navigationController!.presentViewController(question, animated: true, completion: nil)
+        }
     }
 
     
