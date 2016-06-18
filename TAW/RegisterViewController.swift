@@ -41,12 +41,12 @@ class RegisterViewController: UIViewController {
     {
         if(AccountText.text?.characters.count < 6)
         {
-            LoginViewController.AlertMessageShow("帳號大於６個字",  targetViewController: self)
+            FunctionSet.AlertMessageShow("帳號大於６個字",  targetViewController: self)
             return
         }
         if(PasswordText.text?.characters.count < 6)
         {
-            LoginViewController.AlertMessageShow("密碼大於６個字", targetViewController: self)
+            FunctionSet.AlertMessageShow("密碼大於６個字", targetViewController: self)
             return
         }
         
@@ -54,7 +54,7 @@ class RegisterViewController: UIViewController {
         request.HTTPMethod = "POST"
         let ParamsUser: String = try! AccountText.text!.encrypt(AES(key: key, iv: iv)).toBase64()!
         let ParamsPass: String = try! PasswordText.text!.encrypt(AES(key: key, iv: iv)).toBase64()!
-        let ParamsTime: String = try! LoginViewController.GetTimeToString().encrypt(AES(key: key, iv: iv)).toBase64()!
+        let ParamsTime: String = try! FunctionSet.GetTimeToString().encrypt(AES(key: key, iv: iv)).toBase64()!
         let params: String = "Account=" + ParamsUser + "&Password=" + ParamsPass + "&Time=" + ParamsTime
         print("======================================")
         print("Params => " + params)
@@ -63,14 +63,14 @@ class RegisterViewController: UIViewController {
         request.HTTPBody = params.dataUsingEncoding(NSUTF8StringEncoding)
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             guard error == nil && data != nil else {
-                LoginViewController.AlertMessageShow("網路異常，請重新開始", targetViewController: self)
+                FunctionSet.AlertMessageShow("網路異常，請重新開始", targetViewController: self)
                 return
             }
             
             if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(response)")
-                LoginViewController.AlertMessageShow("網路異常，請重新開始", targetViewController: self )
+                FunctionSet.AlertMessageShow("網路異常，請重新開始", targetViewController: self )
             }
             
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
@@ -84,13 +84,13 @@ class RegisterViewController: UIViewController {
                 self.dismissViewControllerAnimated(true, completion: {() in self.SendSuccessMessageToLogin()})
         
             case "01":
-                LoginViewController.AlertMessageShow("時間有誤，請使用正確時間", targetViewController: self)
+                FunctionSet.AlertMessageShow("時間有誤，請使用正確時間", targetViewController: self)
                 
             case "02":
-                LoginViewController.AlertMessageShow("Server異常，請重新開始", targetViewController: self)
+                FunctionSet.AlertMessageShow("Server異常，請重新開始", targetViewController: self)
             
             case "03":
-                LoginViewController.AlertMessageShow("帳號註冊過了", targetViewController: self)
+                FunctionSet.AlertMessageShow("帳號註冊過了", targetViewController: self)
                 
             default:
                 print(responseString)

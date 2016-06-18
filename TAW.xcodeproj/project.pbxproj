@@ -13,6 +13,9 @@
 		D32EA94D1D080A65006EBA2C /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32EA94C1D080A65006EBA2C /* AchievementViewController.swift */; };
 		D32EA94F1D080B98006EBA2C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32EA94E1D080B98006EBA2C /* SettingViewController.swift */; };
 		D32EA9511D080BBE006EBA2C /* PetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32EA9501D080BBE006EBA2C /* PetViewController.swift */; };
+		D364B4A21D13FB2A008C245F /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364B4A11D13FB2A008C245F /* StartViewController.swift */; };
+		D364B4AD1D150473008C245F /* ExpandSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364B4AC1D150473008C245F /* ExpandSegue.swift */; };
+		D3A9A3651D150D590024DA90 /* FunctionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A9A3641D150D590024DA90 /* FunctionSet.swift */; };
 		D3B7658C1CFEBD6300A4B730 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7658B1CFEBD6300A4B730 /* AppDelegate.swift */; };
 		D3B7658E1CFEBD6300A4B730 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7658D1CFEBD6300A4B730 /* LoginViewController.swift */; };
 		D3B765911CFEBD6300A4B730 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3B7658F1CFEBD6300A4B730 /* Main.storyboard */; };
@@ -101,6 +104,9 @@
 		D32EA94C1D080A65006EBA2C /* AchievementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AchievementViewController.swift; path = TAW/AchievementViewController.swift; sourceTree = "<group>"; };
 		D32EA94E1D080B98006EBA2C /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = TAW/SettingViewController.swift; sourceTree = "<group>"; };
 		D32EA9501D080BBE006EBA2C /* PetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetViewController.swift; path = TAW/PetViewController.swift; sourceTree = "<group>"; };
+		D364B4A11D13FB2A008C245F /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartViewController.swift; path = TAW/StartViewController.swift; sourceTree = "<group>"; };
+		D364B4AC1D150473008C245F /* ExpandSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandSegue.swift; sourceTree = "<group>"; };
+		D3A9A3641D150D590024DA90 /* FunctionSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FunctionSet.swift; path = TAW/FunctionSet.swift; sourceTree = "<group>"; };
 		D3B765881CFEBD6300A4B730 /* TAW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TAW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B7658B1CFEBD6300A4B730 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3B7658D1CFEBD6300A4B730 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = TAW/LoginViewController.swift; sourceTree = "<group>"; };
@@ -114,7 +120,7 @@
 		D3B765D81D0412C200A4B730 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = TAW/MenuViewController.swift; sourceTree = "<group>"; };
 		D3DE67131D0EBE4C00DF9F89 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		D3DF76E41D097102004AD0C2 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
-		D3F4C47D1D086FD30085702D /* QRScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScanner.swift; sourceTree = "<group>"; };
+		D3F4C47D1D086FD30085702D /* QRScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRScanner.swift; path = TAW/QRScanner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +140,19 @@
 			children = (
 				D3B765D11CFF3B4000A4B730 /* BackToLogin.swift */,
 				D32EA93C1D07169B006EBA2C /* AllMenuSegue.swift */,
+				D364B4AC1D150473008C245F /* ExpandSegue.swift */,
 			);
 			name = CustomSegue;
+			sourceTree = "<group>";
+		};
+		D3A9A3631D150D1A0024DA90 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				D3F4C47D1D086FD30085702D /* QRScanner.swift */,
+				D3A9A3641D150D590024DA90 /* FunctionSet.swift */,
+			);
+			name = Functions;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		D3B7657F1CFEBD6300A4B730 = {
@@ -161,10 +178,10 @@
 				D3DE67131D0EBE4C00DF9F89 /* UIImage+Gif.swift */,
 				D3DF76E41D097102004AD0C2 /* line.png */,
 				D32EA93E1D072A3E006EBA2C /* ButtonImages */,
+				D3A9A3631D150D1A0024DA90 /* Functions */,
 				D32EA9371D071664006EBA2C /* CustomSegue */,
 				D3F730791D06BC8800FFD5BF /* ViewController */,
 				D3B7658B1CFEBD6300A4B730 /* AppDelegate.swift */,
-				D3F4C47D1D086FD30085702D /* QRScanner.swift */,
 				D3B7658F1CFEBD6300A4B730 /* Main.storyboard */,
 				D3B765921CFEBD6300A4B730 /* Assets.xcassets */,
 				D3B765941CFEBD6300A4B730 /* LaunchScreen.storyboard */,
@@ -195,6 +212,7 @@
 				D32EA94C1D080A65006EBA2C /* AchievementViewController.swift */,
 				D32EA94E1D080B98006EBA2C /* SettingViewController.swift */,
 				D32EA9501D080BBE006EBA2C /* PetViewController.swift */,
+				D364B4A11D13FB2A008C245F /* StartViewController.swift */,
 			);
 			name = ViewController;
 			path = ..;
@@ -327,8 +345,11 @@
 				D32EA94D1D080A65006EBA2C /* AchievementViewController.swift in Sources */,
 				D3B765D21CFF3B4000A4B730 /* BackToLogin.swift in Sources */,
 				D32EA9511D080BBE006EBA2C /* PetViewController.swift in Sources */,
+				D3A9A3651D150D590024DA90 /* FunctionSet.swift in Sources */,
 				D3DE67141D0EBE4C00DF9F89 /* UIImage+Gif.swift in Sources */,
+				D364B4AD1D150473008C245F /* ExpandSegue.swift in Sources */,
 				D32EA93D1D07169B006EBA2C /* AllMenuSegue.swift in Sources */,
+				D364B4A21D13FB2A008C245F /* StartViewController.swift in Sources */,
 				D32EA94F1D080B98006EBA2C /* SettingViewController.swift in Sources */,
 				D3B7658E1CFEBD6300A4B730 /* LoginViewController.swift in Sources */,
 				D32D77061D06E7C600F49FC9 /* MissionViewController.swift in Sources */,

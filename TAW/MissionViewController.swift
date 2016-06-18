@@ -54,7 +54,7 @@ class MissionViewController: UIViewController
             request.HTTPMethod = "GET"
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
                 guard error == nil && data != nil else {
-                    LoginViewController.AlertMessageShow("網路異常，請重新開始", targetViewController: self)
+                    FunctionSet.AlertMessageShow("網路異常，請重新開始", targetViewController: self)
                     return
                 }
                 
@@ -62,7 +62,7 @@ class MissionViewController: UIViewController
                     // check for http errors
                     print("statusCode should be 200, but is \(httpStatus.statusCode)")
                     print("response = \(response)")
-                    LoginViewController.AlertMessageShow("網路異常，請重新開始", targetViewController: self )
+                    FunctionSet.AlertMessageShow("網路異常，請重新開始", targetViewController: self )
                 }
                 
                 let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
@@ -96,9 +96,13 @@ class MissionViewController: UIViewController
     {
         if(TimerIndex < DataFromServer.count)
         {
+            // Gif hidden
+            if !LoadingImage.hidden {
+                LoadingImage.hidden = true
+            }
+            
             let TempButton = UIButton(frame: ItemRect())
             let TempCenter = TempButton.center
-            //TempButton.backgroundColor = UIColor.blueColor()
             TempButton.setBackgroundImage(UIImage(named: "ButtonImages/MissionButton.png"), forState: .Normal)
             TempButton.alpha = 0
             TempButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
@@ -121,7 +125,6 @@ class MissionViewController: UIViewController
         }
         else if(MissionGET)
         {
-            
             for(var i = 0; i < ButtonFromData.count; i++)
             {
                 ButtonFromData[i].addTarget(self, action: #selector(ButtonPressEvent), forControlEvents: .TouchUpInside)

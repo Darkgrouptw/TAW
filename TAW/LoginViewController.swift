@@ -31,7 +31,7 @@ class LoginViewController: UIViewController
         //ResponseText.text = ResponseMessage
         
         // 要傳 post 時間（Ymd-His）給 server，時間正確就拿到 key 回來
-        let request = NSMutableURLRequest(URL: url)
+        /*let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         let params: String = "Time=" + LoginViewController.GetTimeToString()
         print("======================================")
@@ -79,7 +79,7 @@ class LoginViewController: UIViewController
         {
             // 直接傳送 Token
             
-        }*/
+        }*/*/
     }
     
     
@@ -165,29 +165,6 @@ class LoginViewController: UIViewController
         default:
             break
         }
-    }
-    
-
-
-    static func GetTimeToString() -> String
-    {
-        // 拿現在時間
-        let date: NSDate = NSDate()
-        
-        //將時間 fomat 成某個形式
-        let dateFormatter:NSDateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "zh_TW")
-        dateFormatter.dateFormat = "yyyyMMdd-HHmmss"
-        
-        return dateFormatter.stringFromDate(date)
-    }
-    
-    static func AlertMessageShow(msg: String, targetViewController: UIViewController)
-    {
-        let question: UIAlertController = UIAlertController(title: nil, message: msg, preferredStyle: .Alert)
-        let buttonAction: UIAlertAction = UIAlertAction(title: "離開", style: .Default, handler: nil)
-        question.addAction(buttonAction)
-        targetViewController.presentViewController(question, animated: true, completion: nil)
     }
 }
 
