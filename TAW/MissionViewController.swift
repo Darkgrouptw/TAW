@@ -32,9 +32,9 @@ class MissionViewController: UIViewController
     
     // 看有沒有上一個任務還沒完成
     var LastData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-    var selectIndex: Int!       // 選擇第幾個任務
-    var StepNow: Int!           // 現在走到第幾不
-    var MissionToken: String!  // 要破關的 token
+    var selectIndex: Int!           // 選擇第幾個任務
+    var StepNext: Int!              // 下一個到第幾步
+    var MissionToken: String!       // 要破關的 token
     
     // Get All Data
     var DataFromServer: Array<String>!
@@ -46,6 +46,9 @@ class MissionViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        LoadingImage.image = UIImage.gifWithName("ButtonImages/Fireworks")
+        
         LoadingImage.image = UIImage.gifWithName("ButtonImages/loading")
         
         qrScanner = QRScanner(view: view!,inputLabel:  messageLabel, QRBar: QRViewBar)
@@ -84,14 +87,15 @@ class MissionViewController: UIViewController
         {
             IsStart = true
             qrScanner.Start(view)
+            Timer = NSTimer.scheduledTimerWithTimeInterval(1.2, target: self, selector: #selector(DynamicCheckIfGetToken), userInfo: nil, repeats: true)
         }
     }
 
     @IBAction func QRCodeStopEvent(sender: AnyObject)
     {
-        
         IsStart = false
         qrScanner.Stop(view)
+        Timer.invalidate()
     }
     
     
@@ -147,14 +151,20 @@ class MissionViewController: UIViewController
             }
             
             let TempLabel = UILabel(frame: ItemRect())
-            let TempCenter = TempLabel.center
+            var TempCenter = TempLabel.center
             TempLabel.alpha = 0
             TempLabel.textAlignment = NSTextAlignment.Center
             TempLabel.text = DataFromServer[TimerIndex]
             TempLabel.font.fontWithSize(30)
             TempLabel.adjustsFontSizeToFitWidth = true
-            TempLabel.textColor = UIColor.whiteColor()
-            TempLabel.backgroundColor = UIColor.blueColor()
+            if StepNext == -1 {
+                TempLabel.textColor = UIColor.whiteColor()
+                
+                LoadingImage.image = UIImage.gifWithName("ButtonImages/Fireworks")
+                TempCenter = CGPoint(x: TempCenter.x, y: TempCenter.y - 150)
+                LoadingImage.hidden = false
+                LoadingImage.transform = CGAffineTransformMake(7, 0, 0, 7, 0, 130)
+            }
             
             // 使用動畫
             TempLabel.transform = CGAffineTransformMakeScale(0.01, 0.01)
@@ -179,6 +189,64 @@ class MissionViewController: UIViewController
             Timer.invalidate()
         }
     }
+    // 確定 qrCode有沒有拿到
+    func DynamicCheckIfGetToken()
+    {
+        if qrScanner.CheckToken(MissionToken)
+        {
+            self.CameraButton.hidden = true
+            FunctionSet.AlertMessageShow("完成任務！！", targetViewController: self)
+            UIView.animateWithDuration(1, animations: {
+                for(var i = 0; i < self.LabelFromData.count; i++)
+                {
+                    self.LabelFromData[i].center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height + 100)
+                    self.LabelFromData[i].transform = CGAffineTransformMakeScale(0.001, 0.001)
+                    self.LabelFromData[i].alpha = 0
+                }
+                }, completion: { (_) -> Void in
+                    for(var i = 0; i < self.LabelFromData.count; i++)
+                    {
+                        self.LabelFromData[i].removeFromSuperview()
+                    }
+                    
+                    // 清除 Label
+                    self.LabelFromData.removeAll()
+            })
+            QRCodeStopEvent(self)
+            
+            // 開 Thread 拿 http 資料囉
+            let params: String = "Mission=" + String(selectIndex) + "&Step=" + String(StepNext)
+            let request = NSMutableURLRequest(URL: NSURL(string: "http://140.118.175.73/TAW/Missions/?"+params)!)
+            request.HTTPMethod = "GET"
+            
+            print("======================================")
+            print("Params => " + params)
+            print("======================================")
+            
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+                guard error == nil && data != nil else {
+                    FunctionSet.AlertMessageShow("網路異常，請重新開始", targetViewController: self)
+                    return
+                }
+                
+                if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {
+                    // check for http errors
+                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                    print("response = \(response)")
+                    FunctionSet.AlertMessageShow("網路異常，請重新開始", targetViewController: self )
+                }
+                
+                //  將東西清空
+                self.DataFromServer.removeAll()
+                
+                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                self.OperationToDataFromServer(responseString as! String, type: 1)
+            }
+            task.resume()
+            TimerIndex = 0
+            Timer = NSTimer.scheduledTimerWithTimeInterval(1.2, target: self, selector: #selector(DynamicAddMenuLabel), userInfo: nil, repeats: true)
+        }
+    }
     
     // 處理從 Server 來的資料 (Mission => 0, Type => 1)
     func OperationToDataFromServer(str: String, type: Int)
@@ -196,10 +264,23 @@ class MissionViewController: UIViewController
         case 0:
             print("Mission => " + String(DataFromServer.count))
         case 1:
-            StepNow = Int(DataFromServer.last!)! - 1
+            StepNext = Int(DataFromServer.last!)!
             DataFromServer.removeLast()
-            MissionToken = DataFromServer.last!
-            DataFromServer.removeLast()
+            if StepNext != -1
+            {
+                // 正常的 Step
+                MissionToken = DataFromServer.last!
+                DataFromServer.removeLast()
+            }
+            else
+            {
+                self.CameraButton.hidden = true
+                dispatch_async(dispatch_get_main_queue()) {
+                    UIView.animateWithDuration(1, animations: {
+                        self.view.backgroundColor = UIColor.blackColor()
+                    })
+                }
+            }
             print("Step => " + String(DataFromServer.count))
         default:
             break
@@ -214,7 +295,6 @@ class MissionViewController: UIViewController
     func ButtonPressEvent(sender: AnyObject)
     {
         let btn = sender as! UIButton
-        var selectIndex = -1
         print(btn.currentTitle!)
         for(var i = 0; i < DataFromServer.count; i++)
         {
@@ -244,7 +324,6 @@ class MissionViewController: UIViewController
                     
                     // 清除 Button
                     self.ButtonFromData.removeAll()
-                    //LastData.setInteger(selectIndex, forKey: "LastMission")
             })
         }
         
@@ -269,7 +348,6 @@ class MissionViewController: UIViewController
                 return
             }
             
-            //print("123")
             if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {
                 // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")

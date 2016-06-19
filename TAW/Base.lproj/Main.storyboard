@@ -102,7 +102,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="0Zk-Ez-z0U" kind="relationship" relationship="rootViewController" id="kSb-h1-QYh"/>
+                        <segue destination="cCx-br-Osw" kind="relationship" relationship="rootViewController" id="6xm-F6-8oS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXw-M3-2yy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -312,7 +312,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UeQ-3K-aRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1499" y="193"/>
+            <point key="canvasLocation" x="1563" y="-119"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="GDt-eD-fBo">
@@ -547,7 +547,6 @@
         <image name="line.png" width="560" height="315"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kSb-h1-QYh"/>
         <segue reference="ein-CM-5jB"/>
     </inferredMetricsTieBreakers>
 </document>

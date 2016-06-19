@@ -19,6 +19,8 @@ class QRScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate
     var messageLabel: UILabel!
     var QRToolbar: UIToolbar!
     
+    var GetToken: String = ""
+    
     init(view: UIView, inputLabel: UILabel, QRBar: UIToolbar)
     {
         super.init()
@@ -91,6 +93,7 @@ class QRScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate
     func Stop(view: UIView)
     {
         // Stop video capture
+        messageLabel.text = ""
         captureSession?.stopRunning()
         qrCodeFrameView?.frame = CGRectZero
         videoPreviewLayer.removeFromSuperlayer()
@@ -127,9 +130,21 @@ class QRScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
+                if(metadataObj.stringValue.containsString("Token: "))
+                {
+                    GetToken = metadataObj.stringValue.stringByReplacingOccurrencesOfString("Token: ",withString: "")
+                }
                 messageLabel.text = metadataObj.stringValue
             }
         }
     }
 
+    func CheckToken(token: String) -> Bool
+    {
+        if GetToken == token
+        {
+            return true
+        }
+        return false
+    }
 }

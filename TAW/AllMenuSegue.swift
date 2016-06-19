@@ -78,50 +78,7 @@ class AllMenuSegue: UIStoryboardSegue
         }
         else
         {
-            let originCenter = destinationVC.view.center
-            let originSize = destinationVC.view.frame.size
-            
-            circle = UIView(frame: frameFromCircle(originCenter, size: originSize, start: origin))
-            circle!.layer.cornerRadius = circle!.frame.size.height / 2
-            circle!.transform = CGAffineTransformMakeScale(1, 1)
-        
-            circle!.center = origin
-            circle!.backgroundColor = UIColor.yellowColor() //circleColor
-            
             sourceVC.navigationController!.popViewControllerAnimated(true)
-            /*print(destinationVC.view.subviews.count)
-            destinationVC.view.addSubview(sourceVC.view)
-            print(destinationVC.view.subviews.count)
-            sourceVC.dismissViewControllerAnimated(false, completion: nil)
-            //sourceVC.view.removeFromSuperview()
-            
-            //window.insertSubview(destinationVC.view, belowSubview: sourceVC.view)
-            //print(window.subviews[1].backgroundColor)
-            //sourceVC.dismissViewControllerAnimated(true, completion: nil)
-            //sourceVC.dismissViewControllerAnimated(false, completion: nil)
-            //sourceVC.view.addSubview(destinationVC.view)
-            //NSTimer.scheduledTimerWithTimeInterval(0.00001, target: self, selector: #selector(self.DelayDismissTimer), userInfo: nil, repeats: true)
-            //sourceVC.view.addSubview(circle)
-            //
-            
-            UIView.animateWithDuration(self.dismissDuration, animations: {
-                //sourceVC.view.transform = CGAffineTransformMakeScale(0.01, 0.01)
-                //sourceVC.view.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-                //self.circle!.transform = CGAffineTransformMakeScale(0.001, 0.001)
-                //self.circle.alpha = 0
-                //sourceVC.view.transform = CGAffineTransformMakeScale(0.001, 0.001)
-                //sourceVC.view.center = self.origin
-                //}, completion: { (_) -> Void in
-                    //self.circle!.removeFromSuperview()
-                    //sourceVC.dismissViewControllerAnimated(false, completion: nil)
-            })
-            
-            /*self.sourceViewController.dismissViewControllerAnimated(false, completion: { (_) -> Void in
-                
-                //timer.ns
-                destinationVC.view.addSubview(self.circle)
-
-            })*/*/
         }
     }
 }
