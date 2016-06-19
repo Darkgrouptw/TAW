@@ -102,12 +102,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="cCx-br-Osw" kind="relationship" relationship="rootViewController" id="tue-zh-Qbb"/>
+                        <segue destination="0Zk-Ez-z0U" kind="relationship" relationship="rootViewController" id="kSb-h1-QYh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXw-M3-2yy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-586" y="-57"/>
+            <point key="canvasLocation" x="-596" y="-45"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="zmG-PD-k2R">
@@ -301,6 +301,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.87058823529999996" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="TNR-aX-7Rr"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="CameraButton" destination="f8C-nG-i4s" id="WnT-JM-Zfu"/>
@@ -546,6 +547,7 @@
         <image name="line.png" width="560" height="315"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="L14-ru-VGb"/>
+        <segue reference="kSb-h1-QYh"/>
+        <segue reference="ein-CM-5jB"/>
     </inferredMetricsTieBreakers>
 </document>

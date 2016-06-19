@@ -81,8 +81,11 @@ class RegisterViewController: UIViewController {
             switch data[0]
             {
             case "00":
-                self.dismissViewControllerAnimated(true, completion: {() in self.SendSuccessMessageToLogin()})
-        
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.navigationController!.popViewControllerAnimated(true)
+                    self.SendSuccessMessageToLogin()
+                }
+
             case "01":
                 FunctionSet.AlertMessageShow("時間有誤，請使用正確時間", targetViewController: self)
                 

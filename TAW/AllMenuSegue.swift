@@ -73,7 +73,7 @@ class AllMenuSegue: UIStoryboardSegue
                 destinationVC.view.center = originCenter
                 }, completion: { (_) -> Void in
                     self.circle.removeFromSuperview()
-                    self.sourceViewController.navigationController!.presentViewController(self.destinationViewController, animated: false, completion: nil)
+                    self.sourceViewController.navigationController!.pushViewController(self.destinationViewController, animated: false)
             })
         }
         else
@@ -88,7 +88,7 @@ class AllMenuSegue: UIStoryboardSegue
             circle!.center = origin
             circle!.backgroundColor = UIColor.yellowColor() //circleColor
             
-            sourceVC.navigationController!.dismissViewControllerAnimated(true, completion: nil)
+            sourceVC.navigationController!.popViewControllerAnimated(true)
             /*print(destinationVC.view.subviews.count)
             destinationVC.view.addSubview(sourceVC.view)
             print(destinationVC.view.subviews.count)
@@ -123,16 +123,5 @@ class AllMenuSegue: UIStoryboardSegue
 
             })*/*/
         }
-    }
-    
-    func DelayDismissTimer()
-    {
-        print("123123123")
-        let originCenter = self.destinationViewController.view.center
-        let originSize = self.destinationViewController.view.frame.size
-        circle = UIView(frame: frameFromCircle(originCenter, size: originSize, start: origin))
-        circle!.layer.cornerRadius = circle!.frame.size.height / 2
-        circle!.transform = CGAffineTransformMakeScale(1, 1)
-        self.sourceViewController.view.addSubview(self.circle)
     }
 }

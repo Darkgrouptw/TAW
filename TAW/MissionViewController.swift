@@ -29,16 +29,17 @@ class MissionViewController: UIViewController
     
     // 還沒拿到任務之前，都是 False
     var MissionGET: Bool = false
-
+    
     // 看有沒有上一個任務還沒完成
     var LastData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var selectIndex: Int!       // 選擇第幾個任務
     var StepNow: Int!           // 現在走到第幾不
-    var MissionTotken: String!  // 要破關的 token
+    var MissionToken: String!  // 要破關的 token
     
     // Get All Data
     var DataFromServer: Array<String>!
     var ButtonFromData: Array<UIButton> = Array<UIButton>()
+    var LabelFromData: Array<UILabel> = Array<UILabel>()
     var Timer: NSTimer!
     var TimerIndex: Int = 0
     
@@ -136,26 +137,82 @@ class MissionViewController: UIViewController
             Timer.invalidate()
         }
     }
+    func DynamicAddMenuLabel()
+    {
+        if(TimerIndex < DataFromServer.count)
+        {
+            // Gif hidden
+            if !LoadingImage.hidden {
+                LoadingImage.hidden = true
+            }
+            
+            let TempLabel = UILabel(frame: ItemRect())
+            let TempCenter = TempLabel.center
+            TempLabel.alpha = 0
+            TempLabel.textAlignment = NSTextAlignment.Center
+            TempLabel.text = DataFromServer[TimerIndex]
+            TempLabel.font.fontWithSize(30)
+            TempLabel.adjustsFontSizeToFitWidth = true
+            TempLabel.textColor = UIColor.whiteColor()
+            TempLabel.backgroundColor = UIColor.blueColor()
+            
+            // 使用動畫
+            TempLabel.transform = CGAffineTransformMakeScale(0.01, 0.01)
+            TempLabel.center = CGPoint(x: self.view.frame.width / 2 ,y: self.view.frame.height)
+            
+            UIView.animateWithDuration(1, animations: {
+                TempLabel.transform = CGAffineTransformMakeScale(1, 1)
+                TempLabel.center = TempCenter
+                TempLabel.alpha = 1
+            })
+            
+            self.view.addSubview(TempLabel)
+            LabelFromData.append(TempLabel)
+            TimerIndex += 1
+        }
+        else if(MissionGET)
+        {
+            // Show Camera Button
+            CameraButton.hidden = false
+            
+            TimerIndex = 0
+            Timer.invalidate()
+        }
+    }
     
-    
-    // 處理從 Server 來的資料
+    // 處理從 Server 來的資料 (Mission => 0, Type => 1)
     func OperationToDataFromServer(str: String, type: Int)
     {
         print("=========== Data From Server ===========")
-        print(str)
         DataFromServer = str.componentsSeparatedByString("\n")
-        DataFromServer.removeLast()         // 把最後的空白丟掉
-        print(DataFromServer.count)
+        if(DataFromServer.last! == "")
+        {
+            DataFromServer.removeLast()
+        }
+        for(var i = 0; i < DataFromServer.count; i++){
+            print(DataFromServer[i])
+        }
+        switch type {
+        case 0:
+            print("Mission => " + String(DataFromServer.count))
+        case 1:
+            StepNow = Int(DataFromServer.last!)! - 1
+            DataFromServer.removeLast()
+            MissionToken = DataFromServer.last!
+            DataFromServer.removeLast()
+            print("Step => " + String(DataFromServer.count))
+        default:
+            break
+        }
         print("========================================")
         
-        MissionGET = true
         
+        MissionGET = true
     }
+
     
     func ButtonPressEvent(sender: AnyObject)
     {
-        // Show Camera Button
-        CameraButton.hidden = false
         let btn = sender as! UIButton
         var selectIndex = -1
         print(btn.currentTitle!)
@@ -164,6 +221,7 @@ class MissionViewController: UIViewController
             if(DataFromServer[i] == btn.currentTitle)
             {
                 selectIndex = i
+                break
             }
         }
         print("Button Press Event => \(selectIndex)")
@@ -172,28 +230,62 @@ class MissionViewController: UIViewController
         if  selectIndex != -1
         {
             UIView.animateWithDuration(1, animations: {
-                for(var i = 0; i < self.DataFromServer.count; i++)
+                for(var i = 0; i < self.ButtonFromData.count; i++)
                 {
                     self.ButtonFromData[i].center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height + 100)
                     self.ButtonFromData[i].transform = CGAffineTransformMakeScale(0.001, 0.001)
                     self.ButtonFromData[i].alpha = 0
                 }
                 }, completion: { (_) -> Void in
-                    for(var i = 0; i < self.DataFromServer.count; i++)
+                    for(var i = 0; i < self.ButtonFromData.count; i++)
                     {
                         self.ButtonFromData[i].removeFromSuperview()
                     }
+                    
+                    // 清除 Button
+                    self.ButtonFromData.removeAll()
                     //LastData.setInteger(selectIndex, forKey: "LastMission")
             })
         }
         
-        // 清除 Button & DataFromServer
-        ButtonFromData.removeAll()
-        DataFromServer.removeAll()
-        
         // 動態顯示 label
         LoadingImage.hidden = false
         
+        MissionGET = false
+        
+        // 開一個 Thread 去接 step 0,1,2
+        let params: String = "Mission=" + String(selectIndex)
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://140.118.175.73/TAW/Missions/?"+params)!)
+        request.HTTPMethod = "GET"
+        
+        print("======================================")
+        print("Params => " + params)
+        print("======================================")
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+            guard error == nil && data != nil else {
+                //print("網路異常，請重新開始")
+                FunctionSet.AlertMessageShow("網路異常，請重新開始", targetViewController: self)
+                return
+            }
+            
+            //print("123")
+            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {
+                // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+                FunctionSet.AlertMessageShow("網路異常，請重新開始", targetViewController: self )
+            }
+            
+            //  將東西清空
+            self.DataFromServer.removeAll()
+            
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            self.OperationToDataFromServer(responseString as! String, type: 1)
+        }
+        task.resume()
+        TimerIndex = 0
+        Timer = NSTimer.scheduledTimerWithTimeInterval(1.2, target: self, selector: #selector(DynamicAddMenuLabel), userInfo: nil, repeats: true)
     }
     
     func ItemRect() -> CGRect
@@ -208,7 +300,7 @@ class MissionViewController: UIViewController
         // 奇數偶數的不同
         if TimerIndex % 2 == 1
         {
-            LocationY = self.view.frame.size.height / 2 - (CGFloat(DataFromServer.count) - 1) / 2 * ButtonHeight + CGFloat(TimerIndex) * ButtonHeight
+            LocationY = self.view.frame.size.height / 2 - ((CGFloat(DataFromServer.count) - 1) / 2 + 0.5) * ButtonHeight + CGFloat(TimerIndex) * ButtonHeight
         }
         else
         {

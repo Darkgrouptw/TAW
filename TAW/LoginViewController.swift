@@ -37,8 +37,11 @@ class LoginViewController: UIViewController
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "LoginToMenu"
         {
-            NSThread.sleepForTimeInterval(1)
-            return loginSuccess
+            if sender != nil
+            {
+                return false
+            }
+            return true
         }
         return true
     }
@@ -94,8 +97,9 @@ class LoginViewController: UIViewController
                 print("登入成功！！")
                 dispatch_async(dispatch_get_main_queue()) {
                     self.loginSuccess = true
+                    self.performSegueWithIdentifier("LoginToMenu", sender: nil)
                 }
-
+                
             case "01":
                 FunctionSet.AlertMessageShow("時間有誤，請使用正確時間", targetViewController: self)
                 
